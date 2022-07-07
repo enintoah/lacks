@@ -8,7 +8,12 @@
 User.destroy_all
 
 User.create!(name: "Anthonie", email: "anthonie123", password: "123456")
-User.create!(name: "Sunny", email: "sunny123", password: "123456")
-User.create!(name: "Alec", email: "alec123", password: "123456")
 User.create!(name: "Max", email: "max123", password: "123456")
-User.create!(name: "Celebi", email: "celebi", password: "123456")
+User.create!(name: "Kaylin", email: "kaylin123", password: "123456")
+User.create!(name: "Brian", email: "brian123", password: "123456")
+User.create!(name: "Celebi", email: "celebi123", password: "123456")
+User.create!(name: "Ignes", email: "ignes123", password: "123456")
+User.create!(name: "Mahli", email: "mahli123", password: "123456")
+User.create!(name: "Cammy", email: "cammy123", password: "123456")
+User.create!(name: "Jessica", email: "jessica123", password: "123456")
+User.create!(name: "Siona", email: "siona123", password: "123456")

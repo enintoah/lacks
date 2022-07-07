@@ -1,18 +1,19 @@
 import React from "react";
-// import ReactDOM from "react-dom";
 import ReactDOM from "react-dom/client"
-import {
-  signup,
-  logout,
-  login
-} from './util/session_api_util'
+import configureStore from './store/store'
+import Root from './components/root'
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = ReactDOM.createRoot(
     document.getElementById('root')
   );
-  root.render(<h1>Lacks!!!</h1>)
-  window.logout = logout
-  window.signup = signup
-  window.login = login
+
+  const store = configureStore();
+
+  window.getState = store.getState;
+  window.dispatch = store.dispatch; 
+
+  root.render(<Root store = {store} />)
+  
 });
