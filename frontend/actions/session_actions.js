@@ -24,17 +24,17 @@ export const receiveErrors = (errors) => {
   }
 }
 
-export const login = (user) => {
+export const login = (user) => (dispatch) => {
   sessionAPI.login(user)
-    .then(value => dispatch(user))
+    .then(user => dispatch(receiveCurrentUser(user)))
 }
 
-export const logout = () => {
+export const logout = () => (dispatch) => {
   sessionAPI.logout()
     .then(value => dispatch(logoutCurrentUser()))
 }
 
-export const signup = (user) => {
+export const signup = (user) => (dispatch) => {
   sessionAPI.signup(user)
-    .then(value => dispatch(receiveCurrentUser(user)))
+    .then(user => dispatch(receiveCurrentUser(user)))
 }

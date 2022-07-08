@@ -3,7 +3,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(valid_params)
     if @user.save!
       login(@user)
-      render json: ["Account Successfully Created!!"]
+      render :create
     else 
       render json: ["Error... Could not create account :( "]
     end
