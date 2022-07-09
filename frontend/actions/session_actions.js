@@ -3,6 +3,7 @@ import * as sessionAPI from '../util/session_api_util'
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER"
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER"
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS"
+export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS"
 
 export const receiveCurrentUser = (currentUser) => {
   return {
@@ -24,17 +25,31 @@ export const receiveErrors = (errors) => {
   }
 }
 
+export const removeErrors = () => {
+  return {
+    type: CLEAR_SESSION_ERRORS
+  }
+}
+
+export const clearErrors = () => (dispatch) => {
+  return dispatch(removeErrors())
+}
+
 export const login = (user) => (dispatch) => {
-  sessionAPI.login(user)
-    .then(user => dispatch(receiveCurrentUser(user)))
+  return sessionAPI.login(user)
+    .then(user => dispatch(receiveCurrentUser(user)),
+    err => (dispatch(receiveErrors(err.responseJSON)))
+    )
 }
 
 export const logout = () => (dispatch) => {
-  sessionAPI.logout()
-    .then(value => dispatch(logoutCurrentUser()))
+  return sessionAPI.logout()
+    .then(() => dispatch(logoutCurrentUser()))
 }
 
 export const signup = (user) => (dispatch) => {
-  sessionAPI.signup(user)
-    .then(user => dispatch(receiveCurrentUser(user)))
+  return sessionAPI.signup(user)
+    .then(user => dispatch(receiveCurrentUser(user)),
+    err => (dispatch(receiveErrors(err.responseJSON)))
+    )
 }

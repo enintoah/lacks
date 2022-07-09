@@ -18,6 +18,10 @@ class SessionForm extends React.Component {
     this.handleName = this.handleName.bind(this)
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors()
+  }
+
   handleEmail(e) {
     e.preventDefault()
     this.setState({email: e.target.value})
@@ -54,6 +58,7 @@ class SessionForm extends React.Component {
   render() {
     return (this.props.formType === 'login') ? (
       <section className="login">
+        <p>{this.props.errors}</p>
         <form>
           <label>Email: 
             <input type="text" onChange={this.handleEmail} value={this.state.email} />
@@ -67,6 +72,7 @@ class SessionForm extends React.Component {
       </section>
     ) : (
       <section className="signup">
+        <p>{this.props.errors}</p>
         <form>
           <label>Display Name: 
             <input type="text" onChange={this.handleName} value={this.state.name} />

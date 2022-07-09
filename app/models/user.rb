@@ -48,4 +48,28 @@ class User < ApplicationRecord
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64
   end
+
+  def workspaces
+    Workspace.joins("INNER JOIN users_workspaces ON workspaces.id = users_workspaces.workspace_id").where("users_workspaces.user_id = #{self.id}")
+  end
+
+  has_many :sent_user_messages,
+    class_name: :UserMessage,
+    foreign_key: :author_id,
+    primary_key: :id
+
+  has_many :received_user_messages, 
+    class_name: :UserMessage,
+    foreign_key: :recipient_id,
+    primary_key: :id
+  
+  has_many :channel_messages, 
+    class_name: :ChannelMessage,
+    foreign_key: :author_id,
+    primary_key: :id
+
+  has_many :owned_workspaces,
+    class_name: :Workspace,
+    foreign_key: :owner_id,
+    primary_key: :id
 end
