@@ -2,15 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom/client"
 import configureStore from './store/store'
 import Root from './components/root'
-import { populateWorkspace, clearWorkspace } from './actions/workspace_actions'
+import { fetchUserWorkspaces } from './util/workspaces_util'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = ReactDOM.createRoot(
     document.getElementById('root')
   );
+  
+  window.fetchUserWorkspaces = fetchUserWorkspaces
 
   let store;
   if (window.currentUser) {
+    let workspaces = fetchUserWorkspaces(window.currentUser.id)
+    workspaces = workspaces.responseJSON
     const preloadedState = {
       entities: {
         currentUser: { [window.currentUser.id]: window.currentUser }
@@ -23,11 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   } 
 
-  window.clearWorkspace = clearWorkspace;
-  window.populateWorkspace = populateWorkspace; 
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
 
-  root.render(<Root store = {store} />)
+  // root.render(<Root store = {store} />)
+  root.render(<h1>Its Working!</h1>)
   
 });

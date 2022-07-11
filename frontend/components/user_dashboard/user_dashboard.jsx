@@ -10,7 +10,7 @@ class UserDashboard extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.requestUserWorkspaces(this.props.currentUser.id)
   }
 
