@@ -10,7 +10,7 @@ class UserDashboard extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.requestUserWorkspaces(this.props.currentUser.id)
   }
 
@@ -27,8 +27,10 @@ class UserDashboard extends React.Component {
     const workspaces = Object.values(this.props.workspaces)
     return (
       <>
-        <h2>hello {this.props.currentUser.name}!!!</h2>
-        <h2>Workspaces</h2>
+        <h2>Github</h2>
+        <h2>LinkedIn</h2>
+        <h1>Welcome back</h1>
+        <h2>Workspaces for {this.props.currentUser.email}</h2>
         <ul>
           {workspaces.map(el => {
             return (<li key={el.id} onClick={this.handleRedirect(el.id)}>{el.name}</li>)

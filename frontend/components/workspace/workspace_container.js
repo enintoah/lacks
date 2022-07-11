@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import { login, clearErrors } from "../../actions/session_actions";
 import Workspace from "./workspace";
+import { populateWorkspace, clearErrors } from "../../actions/workspace_actions";
 
 const matchStateToProps = (state, ownProps) => {
   return {
@@ -10,8 +10,8 @@ const matchStateToProps = (state, ownProps) => {
 
 const matchDispatchToProps = (dispatch) => {
   return {
-    processForm: (user) => dispatch(login(user)),
-    clearErrors: () => dispatch(clearErrors())
+    populateWorkspace: (id) => dispatch(populateWorkspace(id)),
+    clearWorkspace: () => dispatch(clearErrors())
   }
 }
 

@@ -61,4 +61,8 @@ UserMessage.create!(author_id: 1, conversation_id: 2, recipient_id: 3, body: "de
 UserMessage.create!(author_id: 3, conversation_id: 2, recipient_id: 1, body: "you are dumb")
 
 ChannelMessage.create!(channel_id: 1, user_id: 1, body: "hello world")
+ChannelMessage.create!(channel_id: 1, user_id: 3, body: "shut your dumbass up fr")
+ChannelMessage.create!(channel_id: 2, user_id: 2, body: "hello? is this channel working?")
+ChannelMessage.create!(channel_id: 2, user_id: 1, body: "yes brother")
 ChannelMessage.create!(channel_id: 6, user_id: 1, body: "where this going to be at")
+ChannelMessage.create!(channel_id: 6, user_id: 3, body: "its going to be at your moms house lol")

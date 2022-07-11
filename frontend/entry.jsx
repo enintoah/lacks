@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client"
 import configureStore from './store/store'
 import Root from './components/root'
-import { requestUserWorkspaces } from './actions/workspace_actions'
+import { populateWorkspace, clearWorkspace } from './actions/workspace_actions'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = ReactDOM.createRoot(
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.currentUser) {
     const preloadedState = {
       entities: {
-        users: { [window.currentUser.id]: window.currentUser }
+        currentUser: { [window.currentUser.id]: window.currentUser }
       },
       session: { id: window.currentUser.id }
     };
@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   } 
 
-  window.requestUserWorkspaces = requestUserWorkspaces; 
+  window.clearWorkspace = clearWorkspace;
+  window.populateWorkspace = populateWorkspace; 
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
 

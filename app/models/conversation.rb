@@ -13,6 +13,12 @@ class Conversation < ApplicationRecord
   validate :check_foreign_key
   validates :first_user_id, :second_user_id, :workspace_id, presence: true 
 
+  def self.find_conversations(user_id, workspace_id)
+    arr = []
+    arr.concat(Conversation.select("*").where("first_user_id = #{user_id} AND workspace_id = #{workspace_id}"))
+    arr.concat(Conversation.select("*").where("second_user_id = #{user_id} AND workspace_id = #{workspace_id}"))
+    return arr.uniq
+  end
 
   def check_duplicate
     conversation = Conversation.find_by(first_user_id: self.first_user_id, second_user_id: self.second_user_id, workspace_id: self.workspace_id)

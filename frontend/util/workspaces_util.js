@@ -4,3 +4,10 @@ export const fetchUserWorkspaces= (id) => {
     method: "GET"
   })
 }
+
+export const fetchInitialMessages = (id) => {
+  return $.ajax({
+    url: `/api/initial_messages/${id}`,
+    method: "GET"
+  })
+}

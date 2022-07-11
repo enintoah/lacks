@@ -1,6 +1,5 @@
 import React from "react";
 import UserDashboardContainer from "./user_dashboard/user-dashboard_container";
-import { Route, Switch } from "react-router-dom";
 import LoginFormContainer from "./user_auth/login_form_container";
 import SignupFormContainer from "./user_auth/signup_form_container";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";

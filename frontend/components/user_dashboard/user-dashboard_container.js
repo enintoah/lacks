@@ -5,7 +5,7 @@ import { requestUserWorkspaces } from "../../actions/workspace_actions";
 
 const matchStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.entities.users[state.session.id],
+    currentUser: state.entities.currentUser[state.session.id],
     workspaces: state.entities.workspaces
   }
 }

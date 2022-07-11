@@ -12,6 +12,10 @@ class Workspace < ApplicationRecord
   validates :name, :owner_id, presence: true 
   validate :check_foreign_key
 
+  def users 
+    User.select("*").joins("INNER JOIN users_workspaces ON users.id = users_workspaces.user_id").where("users_workspaces.workspace_id = #{self.id}")
+  end
+
   def check_foreign_key
     user = User.find_by(id: self.owner_id)
     if !user 
