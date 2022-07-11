@@ -9,8 +9,9 @@
 #  updated_at   :datetime         not null
 #
 class UsersWorkspace < ApplicationRecord
-  validate :check_foreign_key
   validates :user_id, :workspace_id, presence: true 
+  validates :user_id, uniqueness: { scope: :workspace_id }
+  validate :check_foreign_key
 
   def check_foreign_key
     user = User.find_by(id: self.user_id)
@@ -19,6 +20,9 @@ class UsersWorkspace < ApplicationRecord
       errors.add(:user_id, "User does not exist")
     elsif !workspace
       errors.add(:workspace_id, "Workspace does not exist")
+    else 
+      updated_size = workspace.current_size + 1
+      workspace.update(current_size: updated_size)
     end
   end
 end

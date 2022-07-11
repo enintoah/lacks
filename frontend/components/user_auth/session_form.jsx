@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from './logo_with_name.png'
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -11,30 +12,17 @@ class SessionForm extends React.Component {
       name: "" 
     }
     
-
-    this.handleEmail = this.handleEmail.bind(this)
-    this.handlePassword = this.handlePassword.bind(this)
+    this.redirectToHome = this.redirectToHome.bind(this)
+    this.update = this.update.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleName = this.handleName.bind(this)
   }
 
   componentWillUnmount() {
     this.props.clearErrors()
   }
 
-  handleEmail(e) {
-    e.preventDefault()
-    this.setState({email: e.target.value})
-  }
-
-  handlePassword(e){
-    e.preventDefault()
-    this.setState({password: e.target.value})
-  }
-
-  handleName(e) {
-    e.preventDefault()
-    this.setState({name: e.target.value})
+  update(field) {
+    return e => this.setState({ [field]: e.currentTarget.value })
   }
 
   handleSubmit(e) {
@@ -54,41 +42,41 @@ class SessionForm extends React.Component {
     })
   }
 
+  redirectToHome() {
+    this.props.history.push('/')
+  }
+
 
   render() {
     return (this.props.formType === 'login') ? (
       <section className="login">
+        <img src={logo} onClick={this.redirectToHome}/>
+        <h1>Sign in to Lacks</h1>
+        <p>We suggest using the <strong>email address you use at work.</strong></p>
         <p>{this.props.errors}</p>
         <form>
-          <label>Email: 
-            <input type="text" onChange={this.handleEmail} value={this.state.email} />
-          </label>
-          <label>Password: 
-            <input type="password" onChange={this.handlePassword} value={this.state.password} />
-          </label>
-          <button onClick={this.handleSubmit}>Login</button>
+            <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="name@work-email.com"/>
+            <input type="password" onChange={this.update('password')} value={this.state.password} placeholder="password"/>
+          <button onClick={this.handleSubmit}>Sign In with Email</button>
         </form>
+        <p>New to Lacks?</p>
         <Link to="/signup">Create a new account</Link> 
       </section>
     ) : (
       <section className="signup">
+        <img src={logo}  onClick={this.redirectToHome}/>
+        <h1>Sign Up for Lacks</h1>
+        <p>We suggest using the <strong>email address you use at work.</strong></p>
         <p>{this.props.errors}</p>
         <form>
-          <label>Display Name: 
-            <input type="text" onChange={this.handleName} value={this.state.name} />
-          </label>
-          <label>Email: 
-            <input type="text" onChange={this.handleEmail} value={this.state.email} />
-          </label>
-          <label>Password: 
-            <input type="password" onChange={this.handlePassword} value={this.state.password} />
-          </label>
-          <button onClick={this.handleSubmit}>Create New Account</button> 
+            <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="name@work-email.com"/>
+            <input type="password" onChange={this.update('password')} value={this.state.password} placeholder="password"/>
+            <input type="text" onChange={this.update('name')} value={this.state.name} placeholder="display name"/>
+          <button onClick={this.handleSubmit}>Sign Up with Email</button> 
         </form>
-        <Link to="/login">Login</Link>
       </section>
     )
   }
 }
-// also need to add some redirects ... 
+
 export default SessionForm

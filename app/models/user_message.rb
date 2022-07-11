@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: user_messages
+#
+#  id              :bigint           not null, primary key
+#  author_id       :integer          not null
+#  conversation_id :integer          not null
+#  recipient_id    :integer          not null
+#  body            :text             not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class UserMessage < ApplicationRecord
   validates :conversation_id, :author_id, :recipient_id, :body, presence: true
   validate :check_foreign_key

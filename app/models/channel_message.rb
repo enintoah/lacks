@@ -1,12 +1,23 @@
+# == Schema Information
+#
+# Table name: channel_messages
+#
+#  id         :bigint           not null, primary key
+#  channel_id :integer          not null
+#  user_id    :integer          not null
+#  body       :text             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class ChannelMessage < ApplicationRecord
-  validates :channel_id, :body, :author_id, presence: true 
+  validates :channel_id, :body, :user_id, presence: true 
   validate :check_foreign_key
 
   def check_foreign_key
-    user = User.find_by(id: self.author_id)
+    user = User.find_by(id: self.user_id)
     channel = Channel.find_by(id: self.channel_id)
     if !user 
-      errors.add(:author_id, "User does not exist")
+      errors.add(:user_id, "User does not exist")
     elsif !channel
       errors.add(:channel_id, "Channel does not exist")
     end
@@ -19,6 +30,6 @@ class ChannelMessage < ApplicationRecord
 
   belongs_to :author,
     class_name: :User,
-    foreign_key: :author_id,
+    foreign_key: :user_id,
     primary_key: :id
 end

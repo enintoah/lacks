@@ -1,21 +1,21 @@
 import React from "react";
-import GreetingContainer from "./user_workspaces/greeting_container";
+import UserDashboardContainer from "./user_dashboard/user-dashboard_container";
 import { Route, Switch } from "react-router-dom";
 import LoginFormContainer from "./user_auth/login_form_container";
 import SignupFormContainer from "./user_auth/signup_form_container";
-import { AuthRoute } from "../util/auth_route_util";
+import { AuthRoute, ProtectedRoute } from "../util/route_util";
+import Homepage from "./homepage/homepage";
+import WorkspaceContainer from "./workspace/workspace_container";
 
 const App = () => (
   <div>
     <header>
-      {/* <h1>Lacks</h1> */}
-      <Route path="/greeting" component={GreetingContainer} />
-      <Route path="/" />
+        <ProtectedRoute path="/workspace/:workspace_id" component={WorkspaceContainer} /> 
+        <ProtectedRoute exact path="/user-dashboard" component={UserDashboardContainer} />
+        <AuthRoute exact path="/" component={Homepage}/>
+        <AuthRoute path="/login" component={LoginFormContainer}/>
+        <AuthRoute path="/signup" component={SignupFormContainer}/>
     </header>
-    <Switch>
-      <AuthRoute path="/login" component={LoginFormContainer}/>
-      <AuthRoute path="/signup" component={SignupFormContainer}/>
-    </Switch>
   </div>
 )
 

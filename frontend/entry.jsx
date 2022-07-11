@@ -2,12 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client"
 import configureStore from './store/store'
 import Root from './components/root'
-import {
-  signup,
-  logout,
-  login
-} from './actions/session_actions'
-
+import { requestUserWorkspaces } from './actions/workspace_actions'
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = ReactDOM.createRoot(
@@ -28,9 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   } 
 
-  window.signup = signup;
-  window.logout = logout;
-  window.login = login; 
+  window.requestUserWorkspaces = requestUserWorkspaces; 
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
 

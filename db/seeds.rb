@@ -10,6 +10,8 @@ Workspace.destroy_all
 UsersWorkspace.destroy_all
 Channel.destroy_all
 Conversation.destroy_all
+UserMessage.destroy_all
+ChannelMessage.destroy_all
 
 User.create!(name: "Anthonie", email: "anthonie123", password: "123456")
 User.create!(name: "Kaylin", email: "kaylin123", password: "123456")
@@ -48,14 +50,15 @@ Channel.create!(name: "Stringing Locations", workspace_id: 3)
 Channel.create!(name: "Practice Times", workspace_id: 3)
 Channel.create!(name: "Game Scheduling", workspace_id: 3)
 
-Conversation.create!(first_user_id: 1, second_user_id: 2)
-Conversation.create!(first_user_id: 1, second_user_id: 3)
-Conversation.create!(first_user_id: 1, second_user_id: 4)
-Conversation.create!(first_user_id: 7, second_user_id: 6)
-Conversation.create!(first_user_id: 7, second_user_id: 5)
-Conversation.create!(first_user_id: 7, second_user_id: 4)
-Conversation.create!(first_user_id: 5, second_user_id: 4)
-Conversation.create!(first_user_id: 5, second_user_id: 3)
-Conversation.create!(first_user_id: 7, second_user_id: 1)
-Conversation.create!(first_user_id: 2, second_user_id: 7)
-Conversation.create!(first_user_id: 1, second_user_id: 5)
+Conversation.create!(first_user_id: 1, second_user_id: 2, workspace_id: 1)
+Conversation.create!(first_user_id: 1, second_user_id: 3, workspace_id: 2)
+Conversation.create!(first_user_id: 1, second_user_id: 4, workspace_id: 3)
+Conversation.create!(first_user_id: 7, second_user_id: 6, workspace_id: 3)
+
+UserMessage.create!(author_id: 1, conversation_id: 1, recipient_id: 2, body: "wassup brother")
+UserMessage.create!(author_id: 2, conversation_id: 1, recipient_id: 1, body: "how are you doing?")
+UserMessage.create!(author_id: 1, conversation_id: 2, recipient_id: 3, body: "deez nuts")
+UserMessage.create!(author_id: 3, conversation_id: 2, recipient_id: 1, body: "you are dumb")
+
+ChannelMessage.create!(channel_id: 1, user_id: 1, body: "hello world")
+ChannelMessage.create!(channel_id: 6, user_id: 1, body: "where this going to be at")

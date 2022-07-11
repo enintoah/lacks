@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_08_233040) do
+ActiveRecord::Schema.define(version: 2022_07_10_062440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,12 @@ ActiveRecord::Schema.define(version: 2022_07_08_233040) do
   create_table "conversations", force: :cascade do |t|
     t.integer "first_user_id", null: false
     t.integer "second_user_id", null: false
+    t.integer "workspace_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["first_user_id", "second_user_id"], name: "index_conversations_on_first_user_id_and_second_user_id", unique: true
-    t.index ["second_user_id", "first_user_id"], name: "index_conversations_on_second_user_id_and_first_user_id", unique: true
+    t.index ["first_user_id"], name: "index_conversations_on_first_user_id"
+    t.index ["second_user_id"], name: "index_conversations_on_second_user_id"
+    t.index ["workspace_id"], name: "index_conversations_on_workspace_id"
   end
 
   create_table "user_messages", force: :cascade do |t|
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(version: 2022_07_08_233040) do
     t.integer "workspace_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "workspace_id"], name: "index_users_workspaces_on_user_id_and_workspace_id", unique: true
     t.index ["user_id"], name: "index_users_workspaces_on_user_id"
     t.index ["workspace_id"], name: "index_users_workspaces_on_workspace_id"
   end
@@ -79,6 +82,7 @@ ActiveRecord::Schema.define(version: 2022_07_08_233040) do
     t.integer "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "current_size", default: 0
     t.index ["name"], name: "index_workspaces_on_name", unique: true
     t.index ["owner_id"], name: "index_workspaces_on_owner_id"
   end

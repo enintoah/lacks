@@ -53,6 +53,10 @@ class User < ApplicationRecord
     Workspace.joins("INNER JOIN users_workspaces ON workspaces.id = users_workspaces.workspace_id").where("users_workspaces.user_id = #{self.id}")
   end
 
+  def workspace_ids
+    Workspace.joins("INNER JOIN users_workspaces ON workspaces.id = users_workspaces.workspace_id").where("users_workspaces.user_id = #{self.id}").pluck(:id)
+  end
+
   has_many :sent_user_messages,
     class_name: :UserMessage,
     foreign_key: :author_id,
@@ -65,7 +69,7 @@ class User < ApplicationRecord
   
   has_many :channel_messages, 
     class_name: :ChannelMessage,
-    foreign_key: :author_id,
+    foreign_key: :user_id,
     primary_key: :id
 
   has_many :owned_workspaces,
