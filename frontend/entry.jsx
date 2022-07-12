@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
 
-  // root.render(<Root store = {store} />)
-  root.render(<h1>Its Working!</h1>)
+  root.render(<Root store = {store} />)
   
 });
