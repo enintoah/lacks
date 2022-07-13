@@ -1,3 +1,5 @@
+import { createChannelMessage } from "../util/channel_util"
+
 export const RECEIVE_CHANNELS = "RECEIVE_ALL_CHANNELS"
 export const RECEIVE_CHANNEL = "RECEIVE_CHANNEL"
 export const CLEAR_CHANNELS = "CLEAR_CHANNELS"
@@ -20,6 +22,13 @@ export const receiveChannelMessages = (messages) => {
   }
 }
 
+export const receiveChannelMessage = (message) => {
+  return {
+    type: RECEIVE_CHANNEL_MESSAGE,
+    message 
+  }
+}
+
 export const clearChannels = () => {
   return {
     type: CLEAR_CHANNELS
@@ -30,4 +39,8 @@ export const clearChannelMessages = () => {
   return {
     type: CLEAR_CHANNEL_MESSAGES
   }
+}
+
+export const sendChannelMessage = (message) => (dispatch) => {
+  return createChannelMessage(message).then((res) => dispatch(receiveChannelMessage(res)))
 }

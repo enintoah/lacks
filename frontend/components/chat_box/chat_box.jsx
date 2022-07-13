@@ -1,10 +1,10 @@
 import React from "react";
+import TextBox from "./text_box";
 
 
 class ChatBox extends React.Component {
   constructor(props) {
     super(props)
-
   }
 
   componentDidMount() {
@@ -21,16 +21,16 @@ class ChatBox extends React.Component {
   }
 
   render() {   
-    console.log(this.props.currentChat)
-    if (!this.props.currentWorkspace) {
+    if (!this.props.currentMessages) {
       return null
     } else if (this.props.chatBoxType === "channel") {
+      let messages = Object.values(this.props.currentMessages)
       return (
         <section>
           <h2># {this.props.currentChat.name}</h2>
           <ul>
             {
-            this.props.currentMessages.map(el => {
+            messages.map(el => {
               return ( 
                 <li key={el.id}>
                   <h2>{this.props.workspaceUsers[el.user_id].name}</h2>
@@ -41,16 +41,17 @@ class ChatBox extends React.Component {
             }      
           </ul>
 
-          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <TextBox currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="channel"/> 
         </section>
       )
     } else {
+      let messages = Object.values(this.props.currentMessages)
       return (
         <section>
           <h2>{this.check_conversation_name(this.props.currentChat.first_user_name, this.props.currentChat.second_user_name)}</h2>
           <ul>
             {
-            this.props.currentMessages.map(el => {
+            messages.map(el => {
               return ( 
                 <li key={el.id}>
                   <h2>{this.props.workspaceUsers[el.author_id].name}</h2>
@@ -61,7 +62,7 @@ class ChatBox extends React.Component {
             }      
           </ul>
 
-          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <TextBox currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="conversation"/> 
         </section>
       )
     }

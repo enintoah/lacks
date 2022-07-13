@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :workspaces, only: [:show]
     resources :initial_messages, only: [:show]
+    resources :conversation_messages, only: [:create]
+    resources :channel_messages, only: [:create]
   end
-
 end

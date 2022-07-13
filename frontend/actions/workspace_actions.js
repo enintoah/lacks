@@ -32,6 +32,7 @@ export const requestUserWorkspaces = (id) => (dispatch) => {
 
 
 export const populateWorkspace = (id) => (dispatch) => {
+
   return fetchInitialMessages(id)
     .then((res) => {
       dispatch(receiveChannels(res.channels));
