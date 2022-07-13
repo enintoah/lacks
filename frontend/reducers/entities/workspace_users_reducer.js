@@ -7,7 +7,7 @@ const workspaceUsersReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_WORKSPACE_USERS:
       action.users.forEach(user => {
-        newState[user.id] = user
+        newState[user.user_id] = user
       })
       return newState;
     case CLEAR_WORKSPACE_USERS:

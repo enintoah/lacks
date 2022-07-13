@@ -42,6 +42,9 @@ class Conversation < ApplicationRecord
       errors.add(:second_user_id, "User does not exist")
     elsif !workspace
       errors.add(:workspace_id, "Workspace dose not exist")
+    else 
+      self.first_user_name = user1.name
+      self.second_user_name = user2.name
     end
   end
 

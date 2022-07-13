@@ -5,7 +5,10 @@ import { populateWorkspace, clearWorkspace, requestUserWorkspaces} from "../../a
 const matchStateToProps = (state, ownProps) => {
   return {
     usersWorkspaces: Object.keys(state.entities.workspaces),
-    currentUser: state.entities.currentUser[state.session.id]
+    currentUser: state.entities.currentUser[state.session.id],
+    currentWorkspace: state.entities.workspaces[ownProps.match.params.workspace_id],
+    channels: Object.values(state.entities.channels),
+    conversations: Object.values(state.entities.conversations)
   }
 }
 

@@ -9,7 +9,7 @@ class Api::InitialMessagesController < ApplicationController
       @conversation_messages = find_conversation_messages(@conversations)
       render :show
     else 
-      render json: ["You do not belong to this workspace brother."], status: 422
+       render json: ["You do not belong to this workspace brother."], status: 422
     end
   end
 

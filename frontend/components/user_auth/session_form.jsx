@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
       name: "" 
     }
     
+    this.loginDemo = this.loginDemo.bind(this)
     this.redirectToHome = this.redirectToHome.bind(this)
     this.update = this.update.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -46,6 +47,9 @@ class SessionForm extends React.Component {
     this.props.history.push('/')
   }
 
+  loginDemo() {
+    this.props.demoLogin()
+  }
 
   render() {
     return (this.props.formType === 'login') ? (
@@ -59,6 +63,7 @@ class SessionForm extends React.Component {
             <input type="password" onChange={this.update('password')} value={this.state.password} placeholder="password"/>
           <button onClick={this.handleSubmit}>Sign In with Email</button>
         </form>
+        <button onClick={this.loginDemo}>Try a Demo</button>
         <p>New to Lacks?</p>
         <Link to="/signup">Create a new account</Link> 
       </section>
@@ -74,6 +79,7 @@ class SessionForm extends React.Component {
             <input type="text" onChange={this.update('name')} value={this.state.name} placeholder="display name"/>
           <button onClick={this.handleSubmit}>Sign Up with Email</button> 
         </form>
+        <button onClick={this.loginDemo}>Try a Demo</button>
       </section>
     )
   }

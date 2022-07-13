@@ -4,7 +4,11 @@ import { NavLink } from "react-router-dom";
 class Homepage extends React.Component {
   constructor(props) {
     super(props)
+    this.loginDemo = this.loginDemo.bind(this)
+  }
 
+  loginDemo(e) {
+    this.props.demoLogin()
   }
 
   render() { 
@@ -14,7 +18,7 @@ class Homepage extends React.Component {
       <h2>LinkedIn</h2>
       <h1>Slack is your digital HQ</h1>
       <h2>Transform the way you work with one place for everyone and everything you need to get stuff done.</h2>
-      <button>Demo</button>
+      <button onClick={this.loginDemo}>Demo</button>
       <NavLink to="/login">Sign in</NavLink>
       <button>Try For Free</button>
     </div>

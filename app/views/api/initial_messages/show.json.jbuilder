@@ -7,7 +7,7 @@ json.channel_messages do
 end
 
 json.conversations do 
-  json.array! @conversations, :id, :first_user_id, :second_user_id
+  json.array! @conversations, :id, :first_user_id, :second_user_id, :first_user_name, :second_user_name
 end
 
 json.conversation_messages do
@@ -15,5 +15,5 @@ json.conversation_messages do
 end
 
 json.workspace_users do
-  json.array! @workspace_users, :id, :name
+  json.array! @workspace_users, :user_id, :name
 end
