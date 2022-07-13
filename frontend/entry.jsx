@@ -30,3 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
   root.render(<Root store = {store} />)
   
 });
+
+// All rights reserved to the original slack.com. This application is no means an attempt to generate financial revenue. It is a copy of the the actual application. All photos and design philosophy is taken from slack.com
