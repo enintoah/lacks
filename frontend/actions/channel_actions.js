@@ -40,7 +40,3 @@ export const clearChannelMessages = () => {
     type: CLEAR_CHANNEL_MESSAGES
   }
 }
-
-export const sendChannelMessage = (message) => (dispatch) => {
-  return createChannelMessage(message).then((res) => dispatch(receiveChannelMessage(res)))
-}

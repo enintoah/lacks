@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client"
 import configureStore from './store/store'
 import Root from './components/root'
-import { sendChannelMessage } from './actions/channel_actions' 
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = ReactDOM.createRoot(
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   } 
 
-  window.sendChannelMessage = sendChannelMessage
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
 

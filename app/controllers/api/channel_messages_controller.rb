@@ -2,7 +2,8 @@ class Api::ChannelMessagesController < ApplicationController
   def create
     @message = ChannelMessage.new(channel_message_params)
     if @message.save
-      render :create 
+      ChannelsChannel.broadcast_to(@message.channel, @message)
+      render :create
     else 
       render json: ["message did not send brother"], status: 422
     end

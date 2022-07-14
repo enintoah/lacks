@@ -41,10 +41,6 @@ export const clearConversationMessages = () => {
   }
 }
 
-export const sendConversationMessage = (message) => (dispatch) => {
-  return createConversationMessage(message).then((res) => dispatch(receiveConversationMessage(res)))
-}
-
 
 
 

@@ -1,8 +1,7 @@
 import { connect } from "react-redux";
 import ChatBox from "./chat_box";
 import { populateWorkspace, requestUserWorkspaces} from "../../actions/workspace_actions";
-import { sendConversationMessage } from "../../actions/conversation_actions";
-
+import { createConversationMessage } from "../../util/conversation_util";
 
 const matchStateToProps = (state, ownProps) => {
   return {
@@ -18,7 +17,7 @@ const matchDispatchToProps = (dispatch) => {
   return {
     requestUserWorkspaces: (id) => dispatch(requestUserWorkspaces(id)),
     populateWorkspace: (id) => dispatch(populateWorkspace(id)), 
-    sendMessage: (message) => dispatch(sendConversationMessage(message))
+    sendMessage: (message) => createConversationMessage(message)
   }
 }
 
