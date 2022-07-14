@@ -70,7 +70,7 @@ class Workspace extends React.Component {
       return name1 
     }
   }
-
+// test
   render() {
     if (!this.props.currentWorkspace) {
       return null
