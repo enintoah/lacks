@@ -27,7 +27,7 @@ class Workspace extends React.Component {
   
   componentWillUnmount() {
     this.props.clearWorkspace();
-    this.subscription?.unsubscribe();
+    // this.unsubscribe();  
   }
 
   enterRoom() {
@@ -63,6 +63,12 @@ class Workspace extends React.Component {
     )
   }
 
+  unsubscribe() {
+    this.subscriptions.forEach(el => {
+      el.unsubscribe();
+    })
+  }
+
   check_conversation_name(name1, name2) {
     if (this.props.currentUser.name === name1) {
       return name2
@@ -70,7 +76,7 @@ class Workspace extends React.Component {
       return name1 
     }
   }
-// test
+
   render() {
     if (!this.props.currentWorkspace) {
       return null

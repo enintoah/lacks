@@ -7,6 +7,5 @@ class CreateChannelMessages < ActiveRecord::Migration[5.2]
       t.timestamps
     end
     add_index :channel_messages, :channel_id
-    add_index :channel_messages, :user_id
   end
 end
