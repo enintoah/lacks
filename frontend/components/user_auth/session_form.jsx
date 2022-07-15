@@ -55,23 +55,44 @@ class SessionForm extends React.Component {
   render() {
     return (this.props.formType === 'login') ? (
       <section className="login">
-        <p>New to Lacks?</p>
-        <Link to="/signup">Create a new account</Link> 
+        <header className="user-auth-header">
+          <div className="user-auth-top-right">
+          </div>
+          <span className="user-auth-logo">
+            <p>New to Lacks?</p>
+            <Link to="/signup">Create a new account</Link> 
+            <div>
+              <img src={window.logo_name} onClick={this.redirectToHome}/>
+            </div>
+          </span>
+        </header>
         <div className="session">
-          <img src={window.logo_name} onClick={this.redirectToHome}/>
           <h1>Sign in to Lacks</h1>
-          <p>We suggest using the <strong>email address you use at work.</strong></p>
+          <p>We suggest using the email address you use at work.</p>
           <p>{this.props.errors}</p>
-          <form>
+          <form className="user-auth-form">
+            <div className="user-auth-input">
               <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="name@work-email.com"/>
+            </div>
               <br />
+            <div className="user-auth-input">
               <input type="password" onChange={this.update('password')} value={this.state.password} placeholder="password"/>
+            </div>
               <br />
-            <button onClick={this.handleSubmit}>Sign In with Email</button>
           </form>
-          <strong>OR</strong>
-          <br />
-          <button onClick={this.loginDemo}>Try a Demo</button>
+          <div className="user-auth-buttons-container">
+            <div className="user-auth-buttons">
+              <button onClick={this.handleSubmit}>Sign In with Email</button>
+            </div>
+            <br />
+            <div>
+              <strong>OR</strong>
+            </div>
+            <br />
+            <div className="user-auth-buttons">
+              <button onClick={this.loginDemo}>Try a Demo</button>
+            </div>
+          </div>
         </div>
       </section>
     ) : (
@@ -79,7 +100,7 @@ class SessionForm extends React.Component {
         <div className="session">
           <img src={window.logo_name}  onClick={this.redirectToHome}/>
           <h1>Sign Up for Lacks</h1>
-          <p>We suggest using the <strong>email address you use at work.</strong></p>
+          <p>We suggest using the  <strong> email address you use at work.</strong></p>
           <p>{this.props.errors}</p>
           <form>
               <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="name@work-email.com"/>
