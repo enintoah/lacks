@@ -14,5 +14,5 @@
  *= require_self
  */
 
- @import './reset.scss';
+ @import './reset.css';
  @import './session_form.scss';
