@@ -1,3 +1,44 @@
+.user-auth-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px; 
+}
+
+.user-auth-photo {
+  height: 46px;
+  margin-left: 130px; 
+}
+
+.user-auth-links {
+  display: flex;
+  flex-direction: column;
+  padding-right: 40px;
+  text-align: right;
+}
+
+.user-auth-links > p {
+  padding-bottom: 5px;
+  font-family: 'Lato', sans-serif;
+  color: #454245;
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.user-auth-links > a {
+  color: #1264a3;
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  padding-bottom: 10px;
+  font-size: 13px;
+}
+
+.user-auth-links > a:hover {
+  text-decoration: underline;
+  color: #0b4c8c;
+}
+
 .session {
   padding-top: 30px;
 }
@@ -8,6 +49,7 @@
   font-weight: 700;
   font-size: 48px;
   padding-bottom: 15px;
+  font-family: 'Lato', sans-serif;
 }
 
 .session > p {
@@ -72,4 +114,16 @@
   font-size: 15px;
   font-family: 'Lato', sans-serif;
   padding: 10px;
+}
+
+.signup-photo-container {
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.signup-photo-container > img {
+  height: 46px;
+  padding-top: 10px;
+  padding-bottom: 30px;
 }

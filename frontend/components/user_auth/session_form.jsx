@@ -59,17 +59,20 @@ class SessionForm extends React.Component {
           <div className="user-auth-top-right">
           </div>
           <span className="user-auth-logo">
-            <p>New to Lacks?</p>
-            <Link to="/signup">Create a new account</Link> 
+            <div></div>
             <div>
-              <img src={window.logo_name} onClick={this.redirectToHome}/>
+              <img className="user-auth-photo" src={window.logo_name} onClick={this.redirectToHome}/>
             </div>
+            <div className="user-auth-links">
+              <p>New to Lacks?</p>
+              <Link to="/signup">Create an account</Link> 
+            </div> 
           </span>
         </header>
         <div className="session">
           <h1>Sign in to Lacks</h1>
           <p>We suggest using the email address you use at work.</p>
-          <p>{this.props.errors}</p>
+          <p className="login-errors">{this.props.errors}</p>
           <form className="user-auth-form">
             <div className="user-auth-input">
               <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="name@work-email.com"/>
@@ -98,22 +101,39 @@ class SessionForm extends React.Component {
     ) : (
       <section className="signup">
         <div className="session">
-          <img src={window.logo_name}  onClick={this.redirectToHome}/>
+          <div className="signup-photo-container">
+            <img src={window.logo_name}  onClick={this.redirectToHome}/>
+          </div>
           <h1>Sign Up for Lacks</h1>
-          <p>We suggest using the  <strong> email address you use at work.</strong></p>
+          <p>We suggest using the email address you use at work.</p>
           <p>{this.props.errors}</p>
-          <form>
+          <form className="user-auth-form">
+            <div className="user-auth-input">
               <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="name@work-email.com"/>
+            </div>
               <br />
+            <div className="user-auth-input">
               <input type="password" onChange={this.update('password')} value={this.state.password} placeholder="password"/>
+            </div>
               <br />
+            <div className="user-auth-input">
               <input type="text" onChange={this.update('name')} value={this.state.name} placeholder="display name"/>
+            </div>
               <br />
-            <button onClick={this.handleSubmit}>Sign Up with Email</button> 
           </form>
-          <strong>OR</strong>
-          <br />
-          <button onClick={this.loginDemo}>Try a Demo</button>
+          <div className="user-auth-buttons-container">
+            <div className="user-auth-buttons">
+              <button onClick={this.handleSubmit}>Sign Up with Email</button> 
+            </div>
+            <br />
+            <div>
+              <strong className="user-auth-or">OR</strong>
+            </div>
+            <br />
+            <div className="user-auth-buttons">
+              <button onClick={this.loginDemo}>Try a Demo</button>
+            </div>
+          </div>
         </div>
       </section>
     )
