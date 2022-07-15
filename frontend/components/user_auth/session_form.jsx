@@ -86,7 +86,7 @@ class SessionForm extends React.Component {
             </div>
             <br />
             <div>
-              <strong>OR</strong>
+              <strong className="user-auth-or">OR</strong>
             </div>
             <br />
             <div className="user-auth-buttons">
