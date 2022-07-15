@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-    <title>Lacks</title>
-    <%= csrf_meta_tags %>
+    <script>
+      window.logo = "<%= image_url('logo.png') %>";
+      window.logo_name = "<%= image_url('logo_with_name.png') %>"
+    </script>
+    <title>Lacks is your digital HQ | Lacks</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" > 
+    <%= csrf_meta_tags %> 
     <%= csp_meta_tag %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>

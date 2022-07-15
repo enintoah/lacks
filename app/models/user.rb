@@ -76,4 +76,6 @@ class User < ApplicationRecord
     class_name: :Workspace,
     foreign_key: :owner_id,
     primary_key: :id
+
+  has_one_attached :profile_picture
 end
