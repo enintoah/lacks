@@ -13,6 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
- @import './reset.css';
- @import './session_form.scss';
