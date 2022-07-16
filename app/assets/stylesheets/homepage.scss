@@ -3,10 +3,9 @@
 }
 
 .homepage-navbar {
-  padding-top: 20px;
-  padding-left: 20px;
-  width: 100%;
-  padding-bottom: 30px;
+  display: flex;
+  align-items: center;
+  height: 80px;
 }
 
 .homepage-logo > img {
@@ -26,8 +25,31 @@
 
 .homepage-links > a {
   margin: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
 }
 
 .homepage-navbar-user-auth-links {
-  float: right;
+  display: flex;
+  align-items: center;
 } 
+
+.homepage-navbar-user-auth-links > a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.hompage-demo-button {
+  background-color: #541554;
+  border: 1px;
+}
+
+.first-homepage-content > h1 {
+  font-size: 65px;
+}
+
+.first-homepage-content > h2 {
+  font-size: 20px;
+}

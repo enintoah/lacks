@@ -32,14 +32,14 @@ class Homepage extends React.Component {
           </div>
           <div className="homepage-navbar-user-auth-links">
             <NavLink to="login">Sign in</NavLink>
-            <button onClick={this.loginDemo}>DEMO</button>
-            <button onClick={this.signup}>TRY FOR FREE</button>
+            <button  className="homepage-demo-button" onClick={this.loginDemo}>DEMO</button>
+            <button className="homepage-try-for-free" onClick={this.signup}>TRY FOR FREE</button>
           </div>
         </div>
-        <section>
+        <section className="first-homepage-content">
           <h1>Great teamwork starts with a digital HQ</h1>
           <h2>With all your people, tools, and communication in one place, you can work faster and more flexibly than ever before.</h2>
-          <NavLink to="/signup">SIGN UP WITH EMAIL</NavLink>
+          <button onClick={this.signup}>SIGN UP WITH EMAIL</button>
           <button onClick={this.loginDemo}>TRY A DEMO</button>
           <h2><strong>Slack is free to try for as long as you'd like</strong></h2>
           <video autoPlay muted loop>
