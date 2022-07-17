@@ -71,7 +71,7 @@ class SessionForm extends React.Component {
         </header>
         <div className="session">
           <h1>Sign in to Lacks</h1>
-          <p>We suggest using the email address you use at work.</p>
+          <p>We suggest using the&nbsp;<strong className="email-at-work">email address you use at work.</strong></p>
           <p className="login-errors">{this.props.errors}</p>
           <form className="user-auth-form">
             <div className="user-auth-input">
@@ -105,7 +105,7 @@ class SessionForm extends React.Component {
             <img src={window.logo_name}  onClick={this.redirectToHome}/>
           </div>
           <h1>Sign Up for Lacks</h1>
-          <p>We suggest using the email address you use at work.</p>
+          <p>We suggest using the&nbsp;<label className="email-at-work">email address you use at work.</label></p>
           <p>{this.props.errors}</p>
           <form className="user-auth-form">
             <div className="user-auth-input">

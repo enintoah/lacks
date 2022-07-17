@@ -1,26 +1,56 @@
+@font-face {
+  font-family: "Larsseit-Bold";
+  src: url('Larsseit-Bold.otf');
+}
+
+@font-face {
+  font-family: "Circular-Regular";
+  src: url('ProductSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: "Circular-Medium";
+  src: url('ProductSans-Medium.ttf');
+}
+
+@font-face {
+  font-family: "Circular-Bold";
+  src: url('ProductSans-Bold.ttf');
+}
+
 .first-homepage {
   background-color: #541554;
+  overflow-x: hidden;
 }
 
 .homepage-navbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 90px;
+  padding-left: 7%;
+  padding-right: 7%;
 }
 
 .homepage-logo > img {
-  height: 33px;;
+  height: 33px;
+  padding-top: 1px;
 }
 
 .homepage-logo {
-  padding-top: 10px;
   display: inline;
+  padding-right: 30px;
+}
+
+.left-side-homepage {
+  text-align: center;
 }
 
 .homepage-links {
   display: inline;
-  padding: 20px;
-  padding-top: none;
+  float: right;
+  padding-top: 10px;
+  padding-right: 30px;
 }
 
 .homepage-links > a {
@@ -28,6 +58,12 @@
   text-decoration: none;
   color: white;
   font-size: 16px;
+  padding-right: 10px;
+  font-family: 'Circular-Medium';
+}
+
+.homepage-links > a:hover {
+  text-decoration: underline;
 }
 
 .homepage-navbar-user-auth-links {
@@ -39,17 +75,129 @@
   text-decoration: none;
   color: white;
   font-size: 16px;
+  padding-right: 20px;
+  font-family: 'Circular-Medium';
 }
 
-.hompage-demo-button {
+.homepage-navbar-user-auth-links > a:hover {
+  text-decoration: underline;
+}
+
+.homepage-demo-button {
   background-color: #541554;
   border: 1px;
+  color: white;
+  border: 1px solid white;
+  height: 45px;
+  border-radius: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 20px;
+  font-family: 'Circular-Medium';
 }
 
-.first-homepage-content > h1 {
-  font-size: 65px;
+.homepage-demo-button:hover {
+  border: 2px solid white;
+  cursor: pointer;
 }
 
-.first-homepage-content > h2 {
+.homepage-try-for-free:hover {
+  border: 2px solid #541554;
+  cursor: pointer;
+}
+
+.homepage-try-for-free {
+  background-color: white;
+  color: #541554;
+  border: 1px solid #541554;
+  outline: none;
+  height: 45px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 4px;
+  margin-left: 20px;
+  font-family: 'Circular-Medium';
+}
+
+.first-homepage-content-text > h1 {
+  font-size: 63px;
+  color: white;
+  font-family: "Larsseit-Bold";
+}
+
+.digital-HQ {
+  color: #ECB22E;
+}
+
+
+.first-homepage-content-text > h2 {
   font-size: 20px;
+  padding-bottom: 30px;
+  padding-top: 25px;
+  color: white;
+  max-width: 550px;
+  line-height: 27px;
+  font-family: 'Circular-Regular';
+}
+
+.first-homepage-content-text > h3 {
+  padding-top: 20px;
+  font-size: 20px;
+  color: white;
+  font-family: 'Circular-Medium';
+}
+
+.first-homepage-content-text {
+  padding-top: 5%;
+}
+
+.first-homepage-content {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 7%;
+  padding-bottom: 300px;
+}
+
+.video-1 > video {
+  max-width: 700px;
+  max-height: 400px;
+  margin-left: 6%;
+  margin-top: 6%;
+}
+
+.text-homepage-button {
+  background-color: #541554;
+  border: 1px;
+  color: white;
+  border: 1px solid white;
+  height: 55px;
+  border-radius: 4px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-left: 20px;
+  font-size: 16px;
+  font-family: 'Circular-Medium';
+}
+
+.demo-text-homepage-button {
+  background-color: white;
+  color: #541554;
+  border: 1px solid #541554;
+  outline: none;
+  height: 55px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'Circular-Medium';
+}
+
+.text-homepage-button:hover {
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.demo-text-homepage-button:hover {
+  border: 2px solid #541554;
+  cursor: pointer;
 }
