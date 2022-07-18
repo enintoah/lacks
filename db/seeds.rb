@@ -13,7 +13,7 @@ Conversation.destroy_all
 UserMessage.destroy_all
 ChannelMessage.destroy_all
 
-User.create!(name: "Adam Lin", email: "demo", password: "123456")
+User.create!(name: "Adam Lin", email: "demo@gmail.com", password: "123456")
 User.create!(name: "Anthonie Lorsithong", email: "demo1", password: "123456")
 User.create!(name: "Alec Choy", email: "alec123", password: "123456")
 User.create!(name: "Alex Kern", email: "alex123", password: "123456")

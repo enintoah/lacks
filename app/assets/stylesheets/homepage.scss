@@ -18,6 +18,16 @@
   src: url('ProductSans-Bold.ttf');
 }
 
+@font-face {
+  font-family: "Larsseit-Medium";
+  src: url('Larsseit-Medium.otf');
+}
+
+@font-face {
+  font-family: 'Circular-Light';
+  src: url('ProductSans-Light.ttf');
+}
+
 .first-homepage {
   background-color: #541554;
   overflow-x: hidden;
@@ -120,7 +130,7 @@
 }
 
 .first-homepage-content-text > h1 {
-  font-size: 63px;
+  font-size: 61px;
   color: white;
   font-family: "Larsseit-Bold";
 }

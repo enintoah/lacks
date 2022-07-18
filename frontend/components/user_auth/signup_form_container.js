@@ -13,7 +13,7 @@ const matchDispatchToProps = (dispatch) => {
   return {
     processForm: (user) => dispatch(signup(user)),
     clearErrors: () => dispatch(clearErrors()),
-    demoLogin: () => dispatch(login({user: {email: "demo", password: "123456"}}))
+    demoLogin: () => dispatch(login({user: {email: "demo@gmail.com", password: "123456"}}))
   }
 }
 

@@ -1,0 +1,155 @@
+.user-dashboard {
+  background-color:#4a154b!important;
+  padding-bottom: 100px;
+  height: 100vh;
+  width: 100vw;
+}
+
+.user-dashboard-welcome-back > h1 {
+  color: white;
+  font-size: 50px;
+  font-family: 'Larsseit-Medium';
+  margin-top: 4%;
+  padding-left: 2px;
+}
+
+.user-dashboard-body {
+  margin-left: 15%;
+  margin-right: 15%;
+  // margin-top: 3%;
+}
+
+.user-dashboard-welcome-back {
+  display: flex;
+  padding-bottom: 2%;
+}
+
+.user-dashboard-waving-hand > img {
+  height: 60px;
+}
+
+.user-dashboard-waving-hand {
+  margin-bottom: 10px;
+  margin-top: 26px;
+}
+
+.user-dashboard-workspaces {
+  background-color: white;
+  border-radius: 9px;
+  border-color: rgba(255,255,255,.2);
+  border: 4px solid rgba(255,255,255,.2);
+}
+
+.user-dashboard-workspaces > h2{
+  background-color: #ecdeec;
+  font-size: 18px;
+  font-family: 'Circular-Regular';
+  padding: 16px;
+}
+
+.user-dashboard-workspace {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.user-dashboard-workspace > button {
+  background-color: #611F69;
+  font-size: 14px;
+  color: white;
+  font-family: 'Circular-Medium';
+  border-radius: 4px;
+  border: none;
+  height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.user-dashboard-inner-workspace > h2 {
+  font-family: 'Circular-Medium';
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+.user-dashboard-inner-workspace > strong {
+  font-size: 14px;
+  font-family: "Circular-Light";
+  color: #696969;
+}
+
+.user-dashboard-workspace > button:hover {
+  background-color: #4a154b;
+  cursor: pointer;
+}
+
+.user-dashboard-bottom-part {
+  display: flex;
+  align-items: center;
+}
+
+// took this from slack.com
+.user-dashboard-bottom-part > img {
+  margin: -1rem 0rem -47px;
+  border-radius: 5px;
+  grid-area: 1/1/2/2;
+}
+
+.user-dashboard-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+  background-color: white;
+  border-radius: 8px;
+  border-color: rgba(255,255,255,.2);
+  border: 4px solid rgba(255,255,255,.2);
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 3px;
+  padding-right: 13px;
+}
+
+.user-dashboard-bottom-part > h2 {
+  padding-left: 20px;
+  font-family: 'Circular-Medium';
+  font-size: 18px;
+}
+
+.user-dashboard-find-engineer {
+  background-color: white;
+  height: 50px;
+  font-size: 16px;
+  font-family: 'Circular-Medium';
+  color: #611F69;
+  border: 1.5px solid #611F69;
+  border-radius: 3px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 5px;
+}
+
+.user-dashboard-find-engineer:hover {
+  border: 2px solid #611F69; 
+}
+
+.user-dashboard-footer-top {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.user-dashboard-footer {
+  color: white;
+  font-size: 18px;
+  font-family: 'Circular-Regular';
+}
+
+p.user-dashboard-footer > a {
+  text-decoration: none;
+  color: #36C5F0;
+  font-size: 18px;
+  font-family: 'Circular-Regular';
+}
+
+p.user-dashboard-footer > a:hover {
+  text-decoration: underline;
+}

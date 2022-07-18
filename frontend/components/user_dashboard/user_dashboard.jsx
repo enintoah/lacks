@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 
 class UserDashboard extends React.Component {
   constructor(props) {
@@ -8,6 +8,7 @@ class UserDashboard extends React.Component {
 
     this.handleRedirect = this.handleRedirect.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleRedirectLinkedIn = this.handleRedirect.bind(this)
   }
 
   componentDidMount() {
@@ -23,21 +24,72 @@ class UserDashboard extends React.Component {
     return () => this.props.history.push(`/workspace/${id}`)
   }
 
+  handleRedirectLinkedIn(e) {
+    e.preventDefault()
+    // window.location.href = ("https://www.linkedin.com/in/anthonie-lorsithong-551741232/");
+    this.props.history.push('https://www.linkedin.com/in/anthonie-lorsithong-551741232/')
+  }
+
   render() {
     const workspaces = Object.values(this.props.workspaces)
     return (
-      <>
-        <h2>Github</h2>
-        <h2>LinkedIn</h2>
-        <h1>Welcome back</h1>
-        <h2>Workspaces for {this.props.currentUser.email}</h2>
-        <ul>
-          {workspaces.map(el => {
-            return (<li key={el.id} onClick={this.handleRedirect(el.id)}>{el.name}</li>)
-          })}
-        </ul>
-        <button onClick={this.handleClick}>Logout...</button>
-      </>
+      <section className="user-dashboard">
+        <div className="homepage-navbar">
+          <div className="left-side-homepage">
+            <div className="homepage-logo">
+              <img src={window.white_logo} />
+            </div>
+            <div className="homepage-links">
+              <a target="_blank" href="https://github.com/enintoah">Github</a>
+              <a target="_blank" href="https://www.linkedin.com/in/anthonie-lorsithong-551741232/">LinkedIn</a>
+              <a target="_blank" href="https://www.appacademy.io/">App Academy</a>
+              <a target="_blank" href="https://slack.com/">Slack</a>
+            </div>
+          </div>
+          <div className="homepage-navbar-user-auth-links">
+            <div className="navbar-buttons">
+              <button className="homepage-try-for-free" onClick={this.handleClick}>LOGOUT</button>
+            </div>
+          </div>
+        </div>
+        <div className="user-dashboard-body">
+          <div className="user-dashboard-welcome-back">
+            <div className="user-dashboard-waving-hand">
+              <img src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/waving-hand.gif" />
+            </div>
+            <h1>Welcome back</h1>
+          </div>
+          <div className="user-dashboard-workspaces">
+            <h2>Workspaces for {this.props.currentUser.email}</h2>
+            <ul>
+              {workspaces.map(el => {
+                return (
+                  
+                  <li key={el.id}>
+                    <div className="user-dashboard-workspace">
+                      <div className="user-dashboard-inner-workspace">
+                        <h2>{el.name} </h2>
+                        <strong>{el.current_size} members</strong>
+                      </div>
+                      <button onClick={this.handleRedirect(el.id)}>LAUNCH LACKS</button>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+          <div className="user-dashboard-bottom">
+            <div className="user-dashboard-bottom-part">
+              <img src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/woman_with_laptop.png"/>
+              <h2>Start fresh and hire a new member for your team</h2>
+            </div>
+            <a target="_blank" href="https://www.linkedin.com/in/anthonie-lorsithong-551741232/"><button className="user-dashboard-find-engineer">FIND&nbsp;A&nbsp;NEW&nbsp;ENGINEER</button></a>
+          </div>
+          <div className="user-dashboard-footer-top">
+            <p className="user-dashboard-footer">Not seeing performance improvements? &nbsp;&nbsp;<a href="https://www.linkedin.com/in/anthonie-lorsithong-551741232/">Try a new hire&nbsp;&nbsp;<i className="fa-solid fa-arrow-right"></i></a></p>
+          </div>
+        </div>
+      </section>
     )
   }
 }

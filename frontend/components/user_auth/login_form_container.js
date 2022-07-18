@@ -12,7 +12,7 @@ const matchStateToProps = (state, ownProps) => {
 const matchDispatchToProps = (dispatch) => {
   return {
     processForm: (user) => dispatch(login(user)),
-    demoLogin: () => dispatch(login({user: {email: "demo", password: "123456"}})),
+    demoLogin: () => dispatch(login({user: {email: "demo@gmail.com", password: "123456"}})),
     clearErrors: () => dispatch(clearErrors())
   }
 }

@@ -28,10 +28,10 @@ class Homepage extends React.Component {
               <img src={window.white_logo} />
             </div>
             <div className="homepage-links">
-              <a href="https://github.com/enintoah">Github</a>
-              <a href="https://www.linkedin.com/in/anthonie-lorsithong-551741232/">LinkedIn</a>
-              <a href="https://www.appacademy.io/">App Academy</a>
-              <a href="https://slack.com/">Slack</a>
+              <a target="_blank" href="https://github.com/enintoah">Github</a>
+              <a target="_blank" href="https://www.linkedin.com/in/anthonie-lorsithong-551741232/">LinkedIn</a>
+              <a target="_blank" href="https://www.appacademy.io/">App Academy</a>
+              <a target="_blank" href="https://slack.com/">Slack</a>
             </div>
           </div>
           <div className="homepage-navbar-user-auth-links">
