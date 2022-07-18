@@ -13,8 +13,8 @@ Conversation.destroy_all
 UserMessage.destroy_all
 ChannelMessage.destroy_all
 
-user1 = User.create!(name: "Anthonie Lorsithong", email: "demo1", password: "123456")
-user2 = User.create!(name: "Adam Lin", email: "demo@gmail.com", password: "123456")
+user2 = User.create!(name: "Anthonie Lorsithong", email: "demo1", password: "123456")
+user1 = User.create!(name: "Adam Lin", email: "demo@gmail.com", password: "123456")
 user3 = User.create!(name: "Alec Choy", email: "alec123", password: "123456")
 user4 = User.create!(name: "Alex Kern", email: "alex123", password: "123456")
 user5 = User.create!(name: "Charlie Xu", email: "charlie123", password: "123456")
