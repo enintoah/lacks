@@ -13,21 +13,17 @@ class Workspace extends React.Component {
     this.subscriptions = []
   }
 
-  componentDidMount() {
-    this.props.requestUserWorkspaces(this.props.currentUser.id)
-    this.props.populateWorkspace(this.props.match.params.workspace_id).then(() => {}, err => (this.props.history.push('/user-dashboard')))
+  async componentDidMount() {
+    await this.props.requestUserWorkspaces(this.props.currentUser.id);
+    await this.props.populateWorkspace(this.props.currentWorkspace.id)
+    this.enterRoom()
+    this.enterFirstChannel()
+    // this.props.history.push(`/workspace/${this.props.match.params.workspace_id}/channel/${this.props.firstChannel}`);
   }
 
-  // componentDidUpdate({ }) {
-  //   if (prevRoomId !== curRoomId) {
-  //     this.subscription?.unsubscribe();
-  //     this.enterRoom();
-  //   }
-  // }
-  
   componentWillUnmount() {
     this.props.clearWorkspace();
-    // this.unsubscribe();  
+    this.unsubscribe();  
   }
 
   enterRoom() {
@@ -77,16 +73,21 @@ class Workspace extends React.Component {
     }
   }
 
+  enterFirstChannel() {
+    this.props.history.push(`/workspace/${this.props.currentWorkspace.id}/channel/${this.props.firstChannel}`);
+  }
+
   render() {
-    if (!this.props.currentWorkspace) {
+    if (!this.props.firstChannel) {
       return null
     } else {
-    console.log("conversations", this.props.conversations)
-    console.log("channels", this.props.channels)
-    this.enterRoom()
-    console.log(this.subscriptions)
+    // this.enterRoom()
+    // this.enterFirstChannel()
     return (
-      <div>
+      <div className="workspace">
+        <div className="workspace-topbar">
+          <input type="text" placeholder="Search"/>
+        </div>
         <h2>{this.props.currentWorkspace.name}</h2>
         <h2>Channels</h2>
         <ul>
