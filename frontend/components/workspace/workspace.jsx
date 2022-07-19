@@ -2,7 +2,7 @@ import React from "react";
 import ChannelContainer from "../chat_box/channel_container";
 import ConversationContainer from "../chat_box/conversation_container";
 import { Route } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import consumer from '../../consumer'
 
 
@@ -39,9 +39,18 @@ class Workspace extends React.Component {
     return consumer.subscriptions.create(
       {channel: 'ChannelsChannel', id: id},
       {
-        received: message => {
-          console.log('Received message', message);
-          this.props.receiveChannelMessage(message);
+        received: ({message, type}) => {
+          console.log(type)
+          switch (type) {
+            case 'RECEIVE_MESSAGE':
+              this.props.receiveChannelMessage(message);
+              return; 
+            case 'DESTROY_MESSAGE':
+              this.props.clearChannelMessage(message)
+              return;
+            default:
+              break;
+          }
         }
       }
     )
@@ -51,9 +60,17 @@ class Workspace extends React.Component {
     return consumer.subscriptions.create(
       {channel: 'ConversationsChannel', id: id},
       {
-        received: message => {
-          console.log('Received message', message);
-          this.props.receiveConversationMessage(message);
+        received: ({message, type}) => {
+
+          switch (type) {
+            case 'RECEIVE_MESSAGE':
+              this.props.receiveConversationMessage(message);
+              return 
+            case 'DESTROY_MESSAGE':
+              this.props.clearConversationMessage(message);
+            default:
+              break;
+          }
         }
       }
     )
@@ -88,35 +105,37 @@ class Workspace extends React.Component {
         <div className="workspace-topbar">
           <input type="text" placeholder="Search"/>
         </div>
-        <h2>{this.props.currentWorkspace.name}</h2>
-        <h2>Channels</h2>
-        <ul>
-          {this.props.channels.map((el) => {
-            return (
-              <li key={el.id}>
-              <Link to={`/workspace/${this.props.match.params.workspace_id}/channel/${el.id}`}>
-                <p>{el.name}</p>
-              </Link>
-            </li>
-            )
-          })}
-        </ul>
-        <h2>Direct Messages</h2>
-        <ul>  
-          {this.props.conversations.map((el) => {
-            return (
-              <li key={el.id}>
-                <Link to={`/workspace/${this.props.match.params.workspace_id}/conversation/${el.id}`}>
-                  <p>{this.check_conversation_name(el.first_user_name, el.second_user_name)}</p>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-
-
-        <Route path="/workspace/:workspace_id/channel/:channel_id" component={ChannelContainer} />
-        <Route path="/workspace/:workspace_id/conversation/:conversation_id" component={ConversationContainer} />
+        <div className="workspace-body">
+          <div className="workspace-sidebar">
+            <h1>{this.props.currentWorkspace.name}</h1>
+            <h2>Channels</h2>
+            <ul>
+              {this.props.channels.map((el) => {
+                return (
+                  <li key={el.id}>
+                  <NavLink className="navlinks" to={`/workspace/${this.props.match.params.workspace_id}/channel/${el.id}`}>
+                    <p className="workspace-channels-conversations">{el.name}</p>
+                  </NavLink>
+                </li>
+                )
+              })}
+            </ul>
+            <h2>Direct Messages</h2>
+            <ul>  
+              {this.props.conversations.map((el) => {
+                return (
+                  <li key={el.id}>
+                    <NavLink className="navlinks" to={`/workspace/${this.props.match.params.workspace_id}/conversation/${el.id}`}>
+                      <p className="workspace-channels-conversations">{this.check_conversation_name(el.first_user_name, el.second_user_name)}</p>
+                    </NavLink>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+          <Route path="/workspace/:workspace_id/channel/:channel_id" component={ChannelContainer} />
+          <Route path="/workspace/:workspace_id/conversation/:conversation_id" component={ConversationContainer} />
+        </div>
 
 
       </div>

@@ -86,7 +86,7 @@ class UserDashboard extends React.Component {
             <a target="_blank" href="https://www.linkedin.com/in/anthonie-lorsithong-551741232/"><button className="user-dashboard-find-engineer">FIND&nbsp;A&nbsp;NEW&nbsp;ENGINEER</button></a>
           </div>
           <div className="user-dashboard-footer-top">
-            <p className="user-dashboard-footer">Not seeing performance improvements? &nbsp;&nbsp;<a href="https://www.linkedin.com/in/anthonie-lorsithong-551741232/">Try a new hire&nbsp;&nbsp;<i className="fa-solid fa-arrow-right"></i></a></p>
+            <p className="user-dashboard-footer">Not seeing performance improvements? &nbsp;&nbsp;<a target="_blank" href="https://www.linkedin.com/in/anthonie-lorsithong-551741232/">Try a new hire&nbsp;&nbsp;<i className="fa-solid fa-arrow-right"></i></a></p>
           </div>
         </div>
       </section>

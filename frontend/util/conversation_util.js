@@ -6,3 +6,9 @@ export const createConversationMessage = (message) => {
   })
 }
 
+export const deleteConversationMessage = (id) => {
+  return $.ajax({
+    url: `/api/conversation_messages/${id}`,
+    method: "DELETE"
+  })
+} 

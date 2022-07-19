@@ -1,4 +1,4 @@
-import { RECEIVE_CHANNEL_MESSAGES, CLEAR_CHANNEL_MESSAGES, RECEIVE_CHANNEL_MESSAGE } from "../../actions/channel_actions"
+import { RECEIVE_CHANNEL_MESSAGES, CLEAR_CHANNEL_MESSAGES, RECEIVE_CHANNEL_MESSAGE, CLEAR_CHANNEL_MESSAGE } from "../../actions/channel_actions"
 import { LOGOUT_CURRENT_USER } from "../../actions/session_actions"
 
 const channelMessagesReducer = (state = {}, action) => {
@@ -22,6 +22,9 @@ const channelMessagesReducer = (state = {}, action) => {
       } else {
         newState[action.message.channel_id] = Object.assign(newState[action.message.channel_id], { [action.message.id]: action.message } )
       }
+      return newState;
+    case CLEAR_CHANNEL_MESSAGE:
+      delete newState[action.message.channel_id][action.message.id];
       return newState;
     case CLEAR_CHANNEL_MESSAGES:
       return {}

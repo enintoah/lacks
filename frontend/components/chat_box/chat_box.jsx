@@ -1,5 +1,6 @@
 import React from "react";
 import TextBox from "./text_box";
+import Message from "./message";
 
 
 class ChatBox extends React.Component {
@@ -26,43 +27,37 @@ class ChatBox extends React.Component {
     } else if (this.props.chatBoxType === "channel") {
       let messages = Object.values(this.props.currentMessages)
       return (
-        <section>
+        <section className="workspace-chat-box">
           <h2># {this.props.currentChat.name}</h2>
-          <ul>
-            {
-            messages.map(el => {
-              return ( 
-                <li key={el.id}>
-                  <h2>{this.props.workspaceUsers[el.user_id].name}</h2>
-                  <p>{el.body}</p>
-                </li> 
-              )
-            })
-            }      
-          </ul>
-
-          <TextBox currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="channel"/> 
+          <div>
+            <ul className="workspace-messages">
+              {
+              messages.map(el => {
+                return ( 
+                  <Message key={el.id} formType="channel" message={el} workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
+                )
+              })
+              }      
+            </ul>
+              <TextBox currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="channel"/> 
+          </div>
         </section>
       )
     } else {
       let messages = Object.values(this.props.currentMessages)
       return (
-        <section>
+        <section className="workspace-chat-box">
           <h2>{this.check_conversation_name(this.props.currentChat.first_user_name, this.props.currentChat.second_user_name)}</h2>
-          <ul>
-            {
-            messages.map(el => {
-              return ( 
-                <li key={el.id}>
-                  <h2>{this.props.workspaceUsers[el.author_id].name}</h2>
-                  <p>{el.body}</p>
-                </li> 
-              )
-            })
-            }      
-          </ul>
-
-          <TextBox currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="conversation"/> 
+            <ul className="workspace-messages">
+              {
+              messages.map(el => {
+                return ( 
+                  <Message key={el.id} message={el} formType="conversation" workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
+                )
+              })
+              }      
+            </ul>
+            <TextBox currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="conversation"/> 
         </section>
       )
     }

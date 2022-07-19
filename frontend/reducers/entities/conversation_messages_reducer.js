@@ -1,4 +1,4 @@
-import { RECEIVE_CONVERSATION_MESSAGES, CLEAR_CONVERSATION_MESSAGES, RECEIVE_CONVERSATION_MESSAGE } from "../../actions/conversation_actions"
+import { RECEIVE_CONVERSATION_MESSAGES, CLEAR_CONVERSATION_MESSAGES, RECEIVE_CONVERSATION_MESSAGE, CLEAR_CONVERSATION_MESSAGE } from "../../actions/conversation_actions"
 import { LOGOUT_CURRENT_USER } from "../../actions/session_actions"
 
 const conversationMessagesReducer = (state = {}, action) => {
@@ -23,6 +23,9 @@ const conversationMessagesReducer = (state = {}, action) => {
         newState[action.message.conversation_id] = Object.assign(newState[action.message.conversation_id], { [action.message.id]: action.message } )
       }
       return newState;
+    case CLEAR_CONVERSATION_MESSAGE: 
+      delete newState[action.message.conversation_id][action.message.id]
+      return newState
     case CLEAR_CONVERSATION_MESSAGES:
       return {}
     case LOGOUT_CURRENT_USER:

@@ -45,7 +45,7 @@ class TextBox extends React.Component {
   render() {
     return (
       <form>
-        <textarea name="" id="" cols="30" rows="10" placeholder="Message" onChange={this.update} value={this.state.body}></textarea>
+        <textarea className="text-box" id="" cols="30" rows="10" placeholder="Message" onChange={this.update} value={this.state.body}></textarea>
         <button onClick={this.handleClick}>Submit Message</button>
       </form>
     )

@@ -5,3 +5,10 @@ export const createChannelMessage = (message) => {
     data: message 
   })
 }
+
+export const deleteChannelMessage = (id) => {
+  return $.ajax({
+    url: `/api/channel_messages/${id}`,
+    method: "DELETE"
+  })
+}

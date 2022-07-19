@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import Workspace from "./workspace";
 import { populateWorkspace, clearWorkspace, requestUserWorkspaces} from "../../actions/workspace_actions";
-import { receiveChannelMessage } from "../../actions/channel_actions";
-import { receiveConversationMessage } from "../../actions/conversation_actions";
+import { receiveChannelMessage, clearChannelMessage } from "../../actions/channel_actions";
+import { receiveConversationMessage, clearConversationMessage } from "../../actions/conversation_actions";
 
 const matchStateToProps = (state, ownProps) => {
   return {
@@ -21,7 +21,9 @@ const matchDispatchToProps = (dispatch) => {
     populateWorkspace: (id) => dispatch(populateWorkspace(id)),
     clearWorkspace: () => dispatch(clearWorkspace()),
     receiveChannelMessage: (message) => dispatch(receiveChannelMessage(message)),
-    receiveConversationMessage: (message) => dispatch(receiveConversationMessage(message))
+    receiveConversationMessage: (message) => dispatch(receiveConversationMessage(message)),
+    clearChannelMessage: (message) => dispatch(clearChannelMessage(message)),
+    clearConversationMessage: (message) => dispatch(clearConversationMessage(message))
   }
 }
 

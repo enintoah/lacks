@@ -6,6 +6,7 @@ export const CLEAR_CONVERSATIONS = "CLEAR_CONVERSATIONS"
 
 export const RECEIVE_CONVERSATION_MESSAGES = "RECEIVE_CONVERSATION_MESSAGES"
 export const RECEIVE_CONVERSATION_MESSAGE = "RECEIVE_CONVERSATION_MESSAGE"
+export const CLEAR_CONVERSATION_MESSAGE = "CLEAR_CONVERSATION_MESSAGE"
 export const CLEAR_CONVERSATION_MESSAGES = "CLEAR_CONVERSATION_MESSAGES"
 
 export const receiveConversations = (conversations) => {
@@ -41,6 +42,11 @@ export const clearConversationMessages = () => {
   }
 }
 
-
+export const clearConversationMessage = (message) => {
+  return {
+    type: CLEAR_CONVERSATION_MESSAGE,
+    message
+  }
+} 
 
 

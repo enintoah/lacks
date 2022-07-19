@@ -1,9 +1,86 @@
 .workspace {
-  padding-bottom: 600px;
+  overflow: hidden;
 }
 
 .workspace-topbar {
-  position: fixed;
+  position: relative;
   width: 100vw;
-  background-color: black;
+  height: 5.5vh;
+  background-color: #121016;
+}
+
+.workspace-sidebar {
+  position: relative;
+  height: 94.5vh;
+  background-color: #19171D;
+  width: 18vw;
+}
+
+.workspace-sidebar > h1 {
+  font-family: 'Lato' sans-serif;
+  font-size: 18px;
+  color: #D1D2D3;
+  font-weight: 700;
+}
+
+.workspace-sidebar > h2 {
+  font-size: 15px;
+  color: #D1D2D3B3;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+.workspace-body {
+  display: flex;
+}
+
+.workspace-messages {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 75vh;
+}
+
+.workspace-chat-box {
+  width: 82vw;
+  height: 94.5vh;
+  background-color: #1A1D21;
+}
+
+.workspace-channels-conversations {
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  color: #D1D2D3B3;;
+  font-weight: 300;
+}
+
+.navlinks {
+  text-decoration: none;
+}
+
+.workspace-message > h2{
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+  color: #D1D2D3;
+  font-weight: 700;
+}
+
+.workspace-message > p {
+  font-size: 15px; 
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: #D1D2D3;
+}
+
+.text-box {
+  height: 13vh;
+  background-color: #222529;
+  width: 70vw;
+  color: #D1D2D3;
+}
+ 
+.workspace-chat-box > h2 {
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  color: #D1D2D3;
 }

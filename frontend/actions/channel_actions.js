@@ -6,6 +6,7 @@ export const CLEAR_CHANNELS = "CLEAR_CHANNELS"
 
 export const RECEIVE_CHANNEL_MESSAGES = "RECEIVE_ALL_CHANNEL_MESSAGES"
 export const RECEIVE_CHANNEL_MESSAGE = "RECEIVE_CHANNEL_MESSAGE"
+export const CLEAR_CHANNEL_MESSAGE = "CLEAR_CHANNEL_MESSAGE"
 export const CLEAR_CHANNEL_MESSAGES = "CLEAR_CHANNEL_MESSAGES"
 
 export const receiveChannels = (channels) => {
@@ -32,6 +33,13 @@ export const receiveChannelMessage = (message) => {
 export const clearChannels = () => {
   return {
     type: CLEAR_CHANNELS
+  }
+}
+
+export const clearChannelMessage = (message) => {
+  return {
+    type: CLEAR_CHANNEL_MESSAGE,
+    message
   }
 }
 
