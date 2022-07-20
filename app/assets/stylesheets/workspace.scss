@@ -1,5 +1,5 @@
 .workspace {
-  overflow: hidden;
+  
 }
 
 .workspace-topbar {
@@ -14,6 +14,7 @@
   height: 94.5vh;
   background-color: #19171D;
   width: 18vw;
+  padding-top: 20px;
 }
 
 .workspace-sidebar > h1 {
@@ -39,11 +40,15 @@
   overflow-y: scroll;
   height: 75vh;
 }
+.workspace-message::-webkit-scrollbar {
+  display: none;
+}
 
 .workspace-chat-box {
   width: 82vw;
   height: 94.5vh;
   background-color: #1A1D21;
+  position: relative;
 }
 
 .workspace-channels-conversations {
@@ -73,7 +78,7 @@
 }
 
 .text-box {
-  height: 13vh;
+  height: 20px;
   background-color: #222529;
   width: 70vw;
   color: #D1D2D3;

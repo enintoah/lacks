@@ -34,12 +34,12 @@ class ChatBox extends React.Component {
               {
               messages.map(el => {
                 return ( 
-                  <Message key={el.id} formType="channel" message={el} workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
+                  <Message receiveTextArea={this.props.receiveTextArea} key={el.id} formType="channel" message={el} workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
                 )
               })
               }      
             </ul>
-              <TextBox currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="channel"/> 
+              <TextBox clearTextArea={this.props.clearTextArea} textarea={this.props.textarea} currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="channel"/> 
           </div>
         </section>
       )
@@ -52,12 +52,12 @@ class ChatBox extends React.Component {
               {
               messages.map(el => {
                 return ( 
-                  <Message key={el.id} message={el} formType="conversation" workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
+                  <Message receiveTextArea={this.props.receiveTextArea} key={el.id} message={el} formType="conversation" workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
                 )
               })
               }      
             </ul>
-            <TextBox currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="conversation"/> 
+            <TextBox clearTextArea={this.props.clearTextArea} textarea={this.props.textarea} currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="conversation"/> 
         </section>
       )
     }

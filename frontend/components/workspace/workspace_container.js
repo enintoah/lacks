@@ -11,7 +11,7 @@ const matchStateToProps = (state, ownProps) => {
     currentWorkspace: state.entities.workspaces[ownProps.match.params.workspace_id],
     channels: Object.values(state.entities.channels),
     conversations: Object.values(state.entities.conversations),
-    firstChannel: Object.keys(state.entities.channels)[0]
+    firstChannel: Object.keys(state.entities.channels)[0],
   }
 }
 

@@ -12,3 +12,11 @@ export const deleteChannelMessage = (id) => {
     method: "DELETE"
   })
 }
+
+export const updateChannelMessage = (id, message) => {
+  return $.ajax({
+    url:  `/api/channel_messages/${id}`,
+    method: 'PATCH',
+    data: message
+  })
+}

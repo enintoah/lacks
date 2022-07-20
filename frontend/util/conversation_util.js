@@ -12,3 +12,11 @@ export const deleteConversationMessage = (id) => {
     method: "DELETE"
   })
 } 
+
+export const updateConversationMessage = (id, message) => {
+  return $.ajax({
+    url:  `/api/conversation_messages/${id}`,
+    method: 'PATCH',
+    data: message
+  })
+}

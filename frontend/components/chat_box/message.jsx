@@ -7,6 +7,7 @@ class Message extends React.Component {
     super(props)
 
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
   }
 
   handleDelete(e) {
@@ -17,12 +18,22 @@ class Message extends React.Component {
       deleteConversationMessage(e.target.value)
     }
   }
+
+  handleEdit(e) {
+    e.preventDefault()
+    let textarea = {
+      message: this.props.message,
+      type: 'edit',
+      formType: this.props.formType
+    }
+    this.props.receiveTextArea(textarea)
+  }
   
   editAndDelete(id, messageId) {
     if (id === this.props.currentUserId) {
       return (
         <div>
-          <button value={messageId}>Edit</button>
+          <button onClick={this.handleEdit}>Edit</button>
           <button onClick={this.handleDelete} value={messageId}>Delete</button>
         </div>
       )

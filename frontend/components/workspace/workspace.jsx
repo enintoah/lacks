@@ -98,8 +98,6 @@ class Workspace extends React.Component {
     if (!this.props.firstChannel) {
       return null
     } else {
-    // this.enterRoom()
-    // this.enterFirstChannel()
     return (
       <div className="workspace">
         <div className="workspace-topbar">

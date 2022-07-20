@@ -1,15 +1,36 @@
 import React from "react";
+import { updateChannelMessage } from './../../util/channel_util'
+import { updateConversationMessage } from './../../util/conversation_util'
 
 class TextBox extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      body: "",
+        body: "",
     }
+    
+    this.editing = false
 
     this.update = this.update.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.handleCreate = this.handleCreate.bind(this)
+    this.handleUpdate = this.handleUpdate.bind(this)
+
+  } 
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.textarea !== this.props.textarea) {
+      this.editing = false 
+    }
+    console.log(this.props.textarea.type)
+    if (this.props.textarea.type === 'edit' && this.editing === false) {
+      this.setState({body: this.props.textarea.message.body})
+      this.editing = true 
+    }
+  }
+
+  setEditState() {
+    this.setState({body: this.props.textarea.message.body})
   }
 
   check_recipient() {
@@ -25,7 +46,7 @@ class TextBox extends React.Component {
     this.setState({body: e.currentTarget.value})
   }
 
-  handleClick(e) {
+  handleCreate(e) {
     e.preventDefault()
     const message = (this.props.formType === "channel") ? { message: {
       channel_id: this.props.currentChat.id,
@@ -40,15 +61,39 @@ class TextBox extends React.Component {
 
     this.props.sendMessage(message)
     this.setState({body: ""})
+    this.editing = false 
   }
 
+  handleUpdate(e) {
+    e.preventDefault()
+    if (this.props.textarea.formType === 'channel') {
+      updateChannelMessage(this.props.textarea.message.id, {message: {body: this.state.body}})
+    } else {
+      updateConversationMessage(this.props.textarea.message.id, {message: {body: this.state.body}})
+    }
+    this.setState({body: ""})
+    this.props.clearTextArea()
+    this.editing = false
+  } 
+
   render() {
-    return (
-      <form>
-        <textarea className="text-box" id="" cols="30" rows="10" placeholder="Message" onChange={this.update} value={this.state.body}></textarea>
-        <button onClick={this.handleClick}>Submit Message</button>
-      </form>
-    )
+    if (!this.props.textarea.type) {
+      return null
+    } else if (this.props.textarea.type === 'create') {
+      return (
+        <form>
+          <textarea className="text-box" cols="30" rows="10" placeholder="Message" onChange={this.update} value={this.state.body}></textarea>
+          <button onClick={this.handleCreate}>Submit Message</button>
+        </form>
+      )
+    } else if (this.props.textarea.type === 'edit') {
+      return (
+        <form>
+          <textarea className="text-box" cols="30" rows="10" onChange={this.update} value={this.state.body}></textarea>
+          <button onClick={this.handleUpdate}>Update Message</button>
+        </form>
+      )
+    }
   }
 }
 

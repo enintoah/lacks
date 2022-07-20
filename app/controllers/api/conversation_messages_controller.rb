@@ -11,7 +11,7 @@ class Api::ConversationMessagesController < ApplicationController
   end
 
   def update 
-    @mesasge = UserMessage.find_by(id: params[:id])
+    @message = UserMessage.find_by(id: params[:id])
     if @message.update(conversation_message_params)
       ConversationsChannel.broadcast_to @message.conversation,
         type: 'RECEIVE_MESSAGE',
