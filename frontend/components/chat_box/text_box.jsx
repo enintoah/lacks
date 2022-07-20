@@ -22,7 +22,6 @@ class TextBox extends React.Component {
     if (prevProps.textarea !== this.props.textarea) {
       this.editing = false 
     }
-    console.log(this.props.textarea.type)
     if (this.props.textarea.type === 'edit' && this.editing === false) {
       this.setState({body: this.props.textarea.message.body})
       this.editing = true 

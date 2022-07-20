@@ -25,18 +25,18 @@ class ChatBox extends React.Component {
     if (!this.props.currentMessages) {
       return null
     } else if (this.props.chatBoxType === "channel") {
-      let messages = Object.values(this.props.currentMessages)
+      let messages = Object.values(this.props.currentMessages).reverse()
       return (
         <section className="workspace-chat-box">
           <h2># {this.props.currentChat.name}</h2>
           <div>
             <ul className="workspace-messages">
               {
-              messages.map(el => {
-                return ( 
-                  <Message receiveTextArea={this.props.receiveTextArea} key={el.id} formType="channel" message={el} workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
-                )
-              })
+                messages.map(el => {
+                  return ( 
+                    <Message receiveTextArea={this.props.receiveTextArea} key={el.id} formType="channel" message={el} workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
+                  )
+                })
               }      
             </ul>
               <TextBox clearTextArea={this.props.clearTextArea} textarea={this.props.textarea} currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="channel"/> 
@@ -44,7 +44,7 @@ class ChatBox extends React.Component {
         </section>
       )
     } else {
-      let messages = Object.values(this.props.currentMessages)
+      let messages = Object.values(this.props.currentMessages).reverse()
       return (
         <section className="workspace-chat-box">
           <h2>{this.check_conversation_name(this.props.currentChat.first_user_name, this.props.currentChat.second_user_name)}</h2>

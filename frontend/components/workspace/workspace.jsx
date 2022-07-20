@@ -40,7 +40,6 @@ class Workspace extends React.Component {
       {channel: 'ChannelsChannel', id: id},
       {
         received: ({message, type}) => {
-          console.log(type)
           switch (type) {
             case 'RECEIVE_MESSAGE':
               this.props.receiveChannelMessage(message);
@@ -101,28 +100,27 @@ class Workspace extends React.Component {
     return (
       <div className="workspace">
         <div className="workspace-topbar">
-          <input type="text" placeholder="Search"/>
         </div>
         <div className="workspace-body">
           <div className="workspace-sidebar">
             <h1>{this.props.currentWorkspace.name}</h1>
-            <h2>Channels</h2>
+            <h2><i className="fa-solid fa-caret-down"></i> Channels</h2>
             <ul>
               {this.props.channels.map((el) => {
                 return (
-                  <li key={el.id}>
-                  <NavLink className="navlinks" to={`/workspace/${this.props.match.params.workspace_id}/channel/${el.id}`}>
-                    <p className="workspace-channels-conversations">{el.name}</p>
-                  </NavLink>
+                  <li key={el.id} className="chats">
+                    <NavLink className="navlinks" to={`/workspace/${this.props.match.params.workspace_id}/channel/${el.id}`}>
+                      <p className="workspace-channels-conversations"># {el.name}</p>
+                    </NavLink>
                 </li>
                 )
               })}
             </ul>
-            <h2>Direct Messages</h2>
+            <h2><i className="fa-solid fa-caret-down"></i> Direct Messages</h2>
             <ul>  
               {this.props.conversations.map((el) => {
                 return (
-                  <li key={el.id}>
+                  <li className="chats" key={el.id}>
                     <NavLink className="navlinks" to={`/workspace/${this.props.match.params.workspace_id}/conversation/${el.id}`}>
                       <p className="workspace-channels-conversations">{this.check_conversation_name(el.first_user_name, el.second_user_name)}</p>
                     </NavLink>
