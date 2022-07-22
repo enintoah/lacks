@@ -11,6 +11,10 @@
   margin-left: 130px; 
 }
 
+.user-auth-photo:hover {
+  cursor: pointer;
+}
+
 .user-auth-links {
   display: flex;
   flex-direction: column;
@@ -136,4 +140,8 @@
   height: 46px;
   padding-top: 10px;
   padding-bottom: 30px;
+}
+
+.signup-photo-container:hover {
+  cursor: pointer;
 }
