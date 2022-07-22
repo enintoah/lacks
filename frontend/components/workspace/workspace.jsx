@@ -18,7 +18,6 @@ class Workspace extends React.Component {
     await this.props.populateWorkspace(this.props.currentWorkspace.id)
     this.enterRoom()
     this.enterFirstChannel()
-    // this.props.history.push(`/workspace/${this.props.match.params.workspace_id}/channel/${this.props.firstChannel}`);
   }
 
   componentWillUnmount() {
@@ -100,30 +99,39 @@ class Workspace extends React.Component {
     return (
       <div className="workspace">
         <div className="workspace-topbar">
+          <input type="text" placeholder={ `Search ${this.props.currentWorkspace.name}`} />
+          <div className="topbar-img">
+            <img src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/profile+picture.png" />
+          </div>
         </div>
         <div className="workspace-body">
           <div className="workspace-sidebar">
             <h1>{this.props.currentWorkspace.name}</h1>
-            <h2><i className="fa-solid fa-caret-down"></i> Channels</h2>
+            <h2>&nbsp;<i className="fa-solid fa-caret-down"></i>&nbsp;&nbsp;&nbsp;Channels</h2>
             <ul>
               {this.props.channels.map((el) => {
                 return (
-                  <li key={el.id} className="chats">
-                    <NavLink className="navlinks" to={`/workspace/${this.props.match.params.workspace_id}/channel/${el.id}`}>
-                      <p className="workspace-channels-conversations"># {el.name}</p>
-                    </NavLink>
+                  <li key={el.id}>
+                    <div className={`chats channel${el.id}`}>
+                      <NavLink className="navlinks" to={`/workspace/${this.props.match.params.workspace_id}/channel/${el.id}`}>
+                        <p className="workspace-channels-conversations">&nbsp;#&nbsp;&nbsp;&nbsp;{el.name}</p>
+                      </NavLink>
+                    </div>
                 </li>
                 )
               })}
             </ul>
-            <h2><i className="fa-solid fa-caret-down"></i> Direct Messages</h2>
+            <h2>&nbsp;<i className="fa-solid fa-caret-down"></i>&nbsp;&nbsp;&nbsp;&nbsp;Direct Messages</h2>
             <ul>  
               {this.props.conversations.map((el) => {
                 return (
-                  <li className="chats" key={el.id}>
-                    <NavLink className="navlinks" to={`/workspace/${this.props.match.params.workspace_id}/conversation/${el.id}`}>
-                      <p className="workspace-channels-conversations">{this.check_conversation_name(el.first_user_name, el.second_user_name)}</p>
-                    </NavLink>
+                  <li key={el.id}>
+                    <div className={`chats conversation${el.id}`}>
+                      <img src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/profile+picture.png"/>                      
+                      <NavLink className="navlinks conversations" to={`/workspace/${this.props.match.params.workspace_id}/conversation/${el.id}`}>
+                        <p className="workspace-channels-conversations">{this.check_conversation_name(el.first_user_name, el.second_user_name)}</p>
+                      </NavLink>
+                    </div>
                   </li>
                 )
               })}

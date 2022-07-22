@@ -32,7 +32,7 @@ class Message extends React.Component {
   editAndDelete(id, messageId) {
     if (id === this.props.currentUserId) {
       return (
-        <div>
+        <div className="edit-delete-buttons">
           <button onClick={this.handleEdit}>Edit</button>
           <button onClick={this.handleDelete} value={messageId}>Delete</button>
         </div>
@@ -49,8 +49,13 @@ class Message extends React.Component {
     }
     return (
       <li className="workspace-message">
-        <h2>{this.props.workspaceUsers[author_id].name}</h2>
-        <p>{this.props.message.body}</p>
+        <div className="profile-pic-container">
+          <img className="profile-pic-message" src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/profile+picture.png"/>
+        </div>
+        <div className="actual-message">
+          <h2>{this.props.workspaceUsers[author_id].name}</h2>
+          <p>{this.props.message.body}</p>
+        </div>
         {this.editAndDelete(author_id, this.props.message.id)}
       </li> 
     )

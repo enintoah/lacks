@@ -1,9 +1,39 @@
+.workspace {
+  overflow: hidden;
+}
+
 .workspace-topbar {
   position: relative;
-  width: 99vw;
+  width: 100vw;
   height: 5.5vh;
   background-color: #121016;
   border-bottom: 2px solid #d1d2d31a;
+  display: flex;
+}
+
+.workspace-topbar > input {
+  margin-left: 260px;
+  width: 725px;
+  height: 25px;
+  border-radius: 6px;
+  color: #D1D2D3;
+  background-color: #D1D2D333;
+  box-shadow: 0 0 0 1px #525055;
+  margin-top: 8px;
+  text-align: center;
+  border: none;
+  font-family: 'Lato', sans-serif;
+}
+
+.topbar-img > img{
+  height: 25px;
+  width: 25px;
+}
+
+.topbar-img {
+  padding-left: 410px;
+  padding-top: 9px;
+  display: flex;
 }
 
 .workspace-sidebar {
@@ -39,14 +69,10 @@
   display: flex;
 }
 
-// .workspace-messages-container {
-//   position: relative;
-// }
-
 .workspace-messages {
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 75vh;
+  height: 70vh;
   display: flex;
   flex-direction: column-reverse;
   margin-left: 1.75%;
@@ -75,47 +101,180 @@
   text-decoration: none;
 }
 
+.conversations {
+  padding-top: 3px;
+  padding-left: 7px;
+}
+
+.selected-chat > a > p {
+  color: white;
+}
+
+.selected-chat {
+  padding-left: 15px;
+  padding-bottom: 7.5px;
+  padding-top: 7.5px;
+  display: flex;
+  background-color: #1164A3;
+}
+
+.selected-chat > img {
+  height: 18px;
+  width: 18px;
+}
+
 .chats {
   padding-left: 15px;
   padding-bottom: 7.5px;
   padding-top: 7.5px;
+  display: flex;
+}
+
+.chats > img {
+  height: 18px;
+  width: 18px;
 }
 
 .chats:hover {
   background-color: #27242C;;
 }
 
-.workspace-message > h2{
+.workspace-message {
+  display: flex;
+}
+
+.actual-message {
+  padding-left: 10px;
+}
+
+.actual-message > h2{
   font-size: 15px;
   font-family: 'Lato', sans-serif;
   color: #D1D2D3;
   font-weight: 700;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
-.workspace-message > p {
+.actual-message > p {
   font-size: 15px; 
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   color: #D1D2D3;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
 }
 
-.text-box {
-  height: 13vh;
-  background-color: #222529;
-  width: 78vw;
-  color: #D1D2D3;
-  margin-left: 1.75%;
-  border-radius: 5px;
+.profile-pic-container {
+  display: flex;
 }
- 
-.workspace-chat-box > h2 {
+
+.profile-pic-message {
+  height: 40px;
+  width: 40px;
+}
+
+.textarea-container {
+  position: relative;
+}
+.textarea-container textarea {
+  width: 78vw;
+  height: 13vh;
+  margin-left: 1.75%;
+  color: #D1D2D3;
+  box-sizing: border-box;
+  background-color: #222529;
+  resize: none;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.textarea-container textarea:focus {
+  outline: 1px solid white;
+}
+
+.textarea-container button {
+  position: absolute;
+  font-family: 'Lato', sans-serif;
+  bottom: 0;
+  right: 0;
+  margin-right: 48px;
+  margin-bottom: 15px;
+  background-color: #007a5a;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+  border: none;
+  border-radius: 3px;
+}
+
+.text-area-button:hover {
+  background-color: #148567;
+  cursor: pointer;
+}
+
+.workspace-chat-box-title {
   font-size: 18px;
   font-family: 'Lato', sans-serif;
   color: #D1D2D3;
-  margin-left: 1.75%;
+  padding-left: 1.75%;
   margin-top: 1.5%;
   padding-bottom: 20px;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #d1d2d31a;
+}
+
+.workspace-chat-box-title-conversations {
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  color: #D1D2D3;
+  padding-left: .75%;
+  margin-top: 1.5%;
+  padding-bottom: 20px;
+
+}
+
+.heading-profile-pic {
+  height: 30px;
+  width: 30px;
+  padding-left: 20px;
+  padding-top: 12px;
+}
+
+.chat-box-header {
+  display: flex;
+  border-bottom: 2px solid #d1d2d31a;
+}
+
+.edit-delete-buttons {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.edit-delete-buttons > button {
+  margin-left: 3px;
+  display: none;
+  font-family: 'Lato', sans-serif;
+  background-color: #007a5a;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.workspace-message:hover {
+  .edit-delete-buttons > button {
+    display: flex;
+  }
+}
+
+.edit-delete-buttons > button:hover {
+  cursor: pointer;
+  background-color: #148567;
 }

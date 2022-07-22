@@ -11,7 +11,8 @@ class TextBox extends React.Component {
     }
     
     this.editing = false
-
+    
+    this.check_chat = this.check_chat.bind(this)
     this.update = this.update.bind(this)
     this.handleCreate = this.handleCreate.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
@@ -28,8 +29,16 @@ class TextBox extends React.Component {
     }
   }
 
-  setEditState() {
-    this.setState({body: this.props.textarea.message.body})
+  check_chat() {
+    if (this.props.formType === 'channel') {
+      return ` #${this.props.currentChat.name}`
+    } else {
+      if (this.props.currentChat.first_user_id === this.props.currentUserId) {
+        return this.props.currentChat.second_user_name
+      } else {
+        return this.props.currentChat.first_user_name
+      }
+    }
   }
 
   check_recipient() {
@@ -80,17 +89,17 @@ class TextBox extends React.Component {
       return null
     } else if (this.props.textarea.type === 'create') {
       return (
-        <form>
-          <textarea className="text-box" cols="30" rows="10" placeholder="Message" onChange={this.update} value={this.state.body}></textarea>
-          <button onClick={this.handleCreate}>Submit Message</button>
-        </form>
+        <div className="textarea-container">
+          <textarea className="text-box" cols="30" rows="10" placeholder={`Message ${this.check_chat()}`} onChange={this.update} value={this.state.body}></textarea>
+          <button className="text-area-button" onClick={this.handleCreate}>Send</button>
+        </div>
       )
     } else if (this.props.textarea.type === 'edit') {
       return (
-        <form>
+        <div className="textarea-container">
           <textarea className="text-box" cols="30" rows="10" onChange={this.update} value={this.state.body}></textarea>
-          <button onClick={this.handleUpdate}>Update Message</button>
-        </form>
+          <button className="text-area-button" onClick={this.handleUpdate}>Send</button>
+        </div>
       )
     }
   }
