@@ -40,6 +40,10 @@ workspace4 = Workspace.create!(name: "Valorant Club", owner_id: user8.id)
 workspace5 = Workspace.create!(name: "One Piece Association LLC", owner_id: user3.id)
 workspace6 = Workspace.create!(name: "Javascript Tutoring", owner_id: user17.id)
 
+workspace7 = Workspace.create!(name: "Political Conversations", owner_id: user2.id)
+workspace8 = Workspace.create!(name: "Restaurant Recommendations", owner_id: user2.id)
+workspace9 = Workspace.create!(name: "Good Music?", owner_id: user2.id)
+
 UsersWorkspace.create!(user_id: user1.id, workspace_id: workspace1.id)
 UsersWorkspace.create!(user_id: user2.id, workspace_id: workspace1.id)
 UsersWorkspace.create!(user_id: user3.id, workspace_id: workspace1.id)
@@ -102,6 +106,9 @@ channel11 = Channel.create!(name: "Manga Readers Only", workspace_id: workspace5
 channel12 = Channel.create!(name: "Anime Watchers Only", workspace_id: workspace5.id)
 channel13 = Channel.create!(name: "Tutoring Dates", workspace_id: workspace6.id)
 channel14 = Channel.create!(name: "Async Questions", workspace_id: workspace6.id)
+channel15 = Channel.create!(name: "Affiliations", workspace_id: workspace7.id)
+channel16 = Channel.create!(name: "Cooking Tips", workspace_id: workspace8.id)
+channel17 = Channel.create!(name: "Best Genre", workspace_id: workspace9.id)
 
 conversation1 = Conversation.create!(first_user_id: user1.id, second_user_id: user2.id, workspace_id: workspace1.id)
 conversation2 = Conversation.create!(first_user_id: user1.id, second_user_id: user3.id, workspace_id: workspace1.id)

@@ -31,14 +31,14 @@ class ChatBox extends React.Component {
 
   highlightChat() {
     if (this.props.chatBoxType === 'channel') {
-      console.log('channel', this.props.match.params.channel_id)
+      // console.log('channel', this.props.match.params.channel_id)
       let ele = document.getElementsByClassName(`channel${this.props.match.params.channel_id}`)[0]
       ele.classList.toggle('chats')
       ele.classList.toggle('selected-chat')
       return 
     } else {
       let ele = document.getElementsByClassName(`conversation${this.props.match.params.conversation_id}`)[0]
-      console.log(ele)
+      // console.log(ele)
       ele.classList.toggle('chats')
       ele.classList.toggle('selected-chat')
       return 
@@ -54,9 +54,31 @@ class ChatBox extends React.Component {
   }
 
   render() {   
-    if (!this.props.currentMessages) {
-      return null
-    } else if (this.props.chatBoxType === "channel") {
+    if (this.props.currentMessages === undefined && this.props.chatBoxType === "channel") {
+      return (
+        <section className="workspace-chat-box">
+          <h2 className="workspace-chat-box-title"># {this.props.currentChat.name}</h2>
+          <div>
+            <ul className="workspace-messages"> 
+            </ul>
+              <TextBox clearTextArea={this.props.clearTextArea} textarea={this.props.textarea} currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="channel"/> 
+          </div>
+        </section>
+      )
+      } else if (this.props.chatBoxType === "conversation" && this.props.currentMessages === undefined) {
+        let messages = Object.values(this.props.currentMessages).reverse()
+        return (
+          <section className="workspace-chat-box">
+            <div className="chat-box-header">
+              <img className ="heading-profile-pic" src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/profile+picture.png" />
+              <h2 className="workspace-chat-box-title-conversations">{this.check_conversation_name(this.props.currentChat.first_user_name, this.props.currentChat.second_user_name)}</h2>
+            </div>
+              <ul className="workspace-messages">  
+              </ul>
+              <TextBox clearTextArea={this.props.clearTextArea} textarea={this.props.textarea} currentUserId={this.props.currentUser.id} currentChat={this.props.currentChat} sendMessage={this.props.sendMessage} formType="conversation"/> 
+          </section>
+        )
+      } else if (this.props.chatBoxType === "channel") {
       let messages = Object.values(this.props.currentMessages).reverse()
       return (
         <section className="workspace-chat-box">

@@ -71,7 +71,7 @@ class UserDashboard extends React.Component {
                         <h2>{el.name} </h2>
                         <strong>{el.current_size} members</strong>
                       </div>
-                      <button onClick={this.handleRedirect(el.id)}>LAUNCH LACKS</button>
+                      <button onClick={this.handleRedirect(el.id)}>LAUNCH LACKS</button> 
                     </div>
                   </li>
                 )
