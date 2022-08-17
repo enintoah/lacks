@@ -11,37 +11,60 @@ class ChatBox extends React.Component {
   async componentDidMount() {
     await this.props.requestUserWorkspaces(this.props.currentUser.id)
     await this.props.populateWorkspace(this.props.match.params.workspace_id).then(() => {}, err => (this.props.history.push('/user-dashboard')))
-    // this.highlightChat()
+    this.highlightCurrent()
   }
 
   componentDidUpdate() {
-    // this.unhighlightChat()
-    // this.highlightChat()
+    this.highlightCurrent()
   }
 
   componentWillUnmount() {
-    // this.unhighlightChat()
+    this.unhighlightChat()
+  }
+
+  highlightCurrent() {
+    let oldEle = document.getElementsByClassName('selected-chat')[0];
+    let newEle;
+    if (this.props.chatBoxType === 'channel') {
+      newEle = document.getElementsByClassName(`channel${this.props.match.params.channel_id}`)[0]
+    } else if (this.props.chatBoxType === 'conversation') {
+      newEle = document.getElementsByClassName(`conversation${this.props.match.params.conversation_id}`)[0]
+    }
+    
+    if (oldEle !== undefined) {
+      oldEle.classList.toggle('chats');
+      oldEle.classList.toggle('selected-chat')
+    }
+
+    if (newEle !== undefined) {
+      newEle.classList.toggle('chats')
+      newEle.classList.toggle('selected-chat')
+    }
   }
 
   unhighlightChat() {
-    let ele = document.getElementsByClassName('selected-chat')[0]
-    ele.classList.toggle('chats')
-    ele.classList.toggle('selected-chat')
+      let ele = document.getElementsByClassName('selected-chat')[0]
+      if (ele !== undefined) {
+        ele.classList.toggle('chats')
+        ele.classList.toggle('selected-chat')
+      }
   }
 
-  highlightChat() {
-    if (this.props.chatBoxType === 'channel') {
-      let ele = document.getElementsByClassName(`channel${this.props.match.params.channel_id}`)[0]
-      ele.classList.toggle('chats')
-      ele.classList.toggle('selected-chat')
-      return 
-    } else {
-      let ele = document.getElementsByClassName(`conversation${this.props.match.params.conversation_id}`)[0]
-      ele.classList.toggle('chats')
-      ele.classList.toggle('selected-chat')
-      return 
-    }
-  }
+  // highlightChat() {
+  //   if (this.props.chatBoxType === undefined) {
+  //     return 
+  //   } else if (this.props.chatBoxType === 'channel') {
+  //     let ele = document.getElementsByClassName(`channel${this.props.match.params.channel_id}`)[0]
+  //     ele.classList.toggle('chats')
+  //     ele.classList.toggle('selected-chat')
+  //     return 
+  //   } else if (this.props.chatBoxType === 'conversation') {
+  //     let ele = document.getElementsByClassName(`conversation${this.props.match.params.conversation_id}`)[0]
+  //     ele.classList.toggle('chats')
+  //     ele.classList.toggle('selected-chat')
+  //     return 
+  //   }
+  // }
 
   check_conversation_name(name1, name2) {
     if (this.props.currentUser.name === name1) {
