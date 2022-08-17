@@ -1,4 +1,4 @@
-import { createConversationMessage } from './../util/conversation_util'
+import { createConversation } from "../util/conversation_util"
 
 export const RECEIVE_CONVERSATIONS = "RECEIVE_ALL_CONVERSATIONS"
 export const RECEIVE_CONVERSATION = "RECEIVE_CONVERSATION" 
@@ -13,6 +13,13 @@ export const receiveConversations = (conversations) => {
   return {
     type: RECEIVE_CONVERSATIONS,
     conversations
+  }
+}
+
+export const receiveConversation = (conversation) => {
+  return {
+    type: RECEIVE_CONVERSATION, 
+    conversation 
   }
 }
 
@@ -49,4 +56,7 @@ export const clearConversationMessage = (message) => {
   }
 } 
 
-
+export const createNewConversation = (conversation) => (dispatch) => {
+  return createConversation(conversation)
+    .then(res => dispatch(receiveConversation(res)))
+}

@@ -1,4 +1,4 @@
-import { RECEIVE_CONVERSATIONS, CLEAR_CONVERSATIONS} from "../../actions/conversation_actions"
+import { RECEIVE_CONVERSATIONS, CLEAR_CONVERSATIONS, RECEIVE_CONVERSATION } from "../../actions/conversation_actions"
 import { LOGOUT_CURRENT_USER } from "../../actions/session_actions"
 
 const conversationsReducer = (state = {}, action) => {
@@ -10,6 +10,9 @@ const conversationsReducer = (state = {}, action) => {
         newState[el.id] = el 
       })
       return newState;
+    case RECEIVE_CONVERSATION: 
+      newState[action.conversation.id] = action.conversation
+      return newState
     case CLEAR_CONVERSATIONS: 
     return {}
     case LOGOUT_CURRENT_USER:

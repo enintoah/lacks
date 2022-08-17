@@ -4,6 +4,7 @@ import ConversationContainer from "../chat_box/conversation_container";
 import { Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import consumer from '../../consumer'
+import CreateConversationContainer from "../create_conversation/create_conversation_container";
 
 
 class Workspace extends React.Component {
@@ -108,6 +109,8 @@ class Workspace extends React.Component {
           <div className="workspace-sidebar">
             <h1>{this.props.currentWorkspace.name}</h1>
             <h2>&nbsp;<i className="fa-solid fa-caret-down"></i>&nbsp;&nbsp;&nbsp;Channels</h2>
+            
+
             <ul>
               {this.props.channels.map((el) => {
                 return (
@@ -121,7 +124,12 @@ class Workspace extends React.Component {
                 )
               })}
             </ul>
-            <h2>&nbsp;<i className="fa-solid fa-caret-down"></i>&nbsp;&nbsp;&nbsp;&nbsp;Direct Messages</h2>
+            <div className="workspace-direct-messages">
+              <h2>&nbsp;<i className="fa-solid fa-caret-down"></i>&nbsp;&nbsp;&nbsp;&nbsp;Direct Messages</h2>
+              <NavLink className="arrow-for-create-conversation" to={`/workspace/${this.props.match.params.workspace_id}/newConversation`}> 
+                <img src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/plus-sign.png"/>
+              </NavLink>
+            </div>
             <ul>  
               {this.props.conversations.map((el) => {
                 return (
@@ -137,6 +145,7 @@ class Workspace extends React.Component {
               })}
             </ul>
           </div>
+          <Route path="/workspace/:workspace_id/newConversation" component={CreateConversationContainer}/>
           <Route path="/workspace/:workspace_id/channel/:channel_id" component={ChannelContainer} />
           <Route path="/workspace/:workspace_id/conversation/:conversation_id" component={ConversationContainer} />
         </div>

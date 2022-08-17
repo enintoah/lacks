@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     resources :initial_messages, only: [:show]
     resources :conversation_messages, only: [:create, :update, :destroy]
     resources :channel_messages, only: [:create, :update, :destroy]
+    resources :conversations, only: [:create, :destroy]
   end
 end

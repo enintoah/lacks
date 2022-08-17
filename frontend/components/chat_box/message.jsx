@@ -41,24 +41,37 @@ class Message extends React.Component {
   }
 
   render() {
+
     let author_id;
+    let name;
     if (this.props.formType === "channel") {
       author_id = this.props.message.user_id
     } else {
       author_id = this.props.message.author_id
     }
-    return (
-      <li className="workspace-message">
-        <div className="profile-pic-container">
-          <img className="profile-pic-message" src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/profile+picture.png"/>
-        </div>
-        <div className="actual-message">
-          <h2>{this.props.workspaceUsers[author_id].name}</h2>
-          <p>{this.props.message.body}</p>
-        </div>
-        {this.editAndDelete(author_id, this.props.message.id)}
-      </li> 
-    )
+
+    if (author_id === this.props.currentUserId) {
+      name = this.props.currentUser.name
+    } else {
+      name = this.props.workspaceUsers[author_id].name
+    }
+
+    if (this.props.workspaceUsers == undefined) {
+      return null 
+    } else {
+      return (
+        <li className="workspace-message">
+          <div className="profile-pic-container">
+            <img className="profile-pic-message" src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/profile+picture.png"/>
+          </div>
+          <div className="actual-message">
+            <h2>{name}</h2>
+            <p>{this.props.message.body}</p>
+          </div>
+          {this.editAndDelete(author_id, this.props.message.id)}
+        </li> 
+      )
+    }
   }
 }
 

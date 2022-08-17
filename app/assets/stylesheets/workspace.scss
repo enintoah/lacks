@@ -278,3 +278,34 @@
   cursor: pointer;
   background-color: #148567;
 }
+
+.workspace-direct-messages {
+  display: flex;
+}
+
+.workspace-direct-messages:hover {
+  .arrow-for-create-conversation {
+    display: block;
+  }
+}
+
+.workspace-direct-messages > h2 {
+  font-size: 15px;
+  color: #D1D2D3B3;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-bottom: 7.5px;
+}
+
+.arrow-for-create-conversation {
+  display: none;
+  margin-left: 80px;
+  margin-top: 14px;
+}
+
+.arrow-for-create-conversation > img {
+  height: 18px;
+}
+

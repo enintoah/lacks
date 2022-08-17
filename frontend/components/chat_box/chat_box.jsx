@@ -8,19 +8,19 @@ class ChatBox extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-    this.props.requestUserWorkspaces(this.props.currentUser.id)
-    this.props.populateWorkspace(this.props.match.params.workspace_id).then(() => {}, err => (this.props.history.push('/user-dashboard')))
-    this.highlightChat()
+  async componentDidMount() {
+    await this.props.requestUserWorkspaces(this.props.currentUser.id)
+    await this.props.populateWorkspace(this.props.match.params.workspace_id).then(() => {}, err => (this.props.history.push('/user-dashboard')))
+    // this.highlightChat()
   }
 
   componentDidUpdate() {
-    this.unhighlightChat()
-    this.highlightChat()
+    // this.unhighlightChat()
+    // this.highlightChat()
   }
 
   componentWillUnmount() {
-    this.unhighlightChat()
+    // this.unhighlightChat()
   }
 
   unhighlightChat() {
@@ -31,14 +31,12 @@ class ChatBox extends React.Component {
 
   highlightChat() {
     if (this.props.chatBoxType === 'channel') {
-      // console.log('channel', this.props.match.params.channel_id)
       let ele = document.getElementsByClassName(`channel${this.props.match.params.channel_id}`)[0]
       ele.classList.toggle('chats')
       ele.classList.toggle('selected-chat')
       return 
     } else {
       let ele = document.getElementsByClassName(`conversation${this.props.match.params.conversation_id}`)[0]
-      // console.log(ele)
       ele.classList.toggle('chats')
       ele.classList.toggle('selected-chat')
       return 
@@ -54,7 +52,9 @@ class ChatBox extends React.Component {
   }
 
   render() {   
-    if (this.props.currentMessages === undefined && this.props.chatBoxType === "channel") {
+    if (this.props.currentChat === undefined || this.props.workspaceUsers === undefined) {
+      return null 
+    } else if (this.props.currentMessages === undefined && this.props.chatBoxType === "channel") {
       return (
         <section className="workspace-chat-box">
           <h2 className="workspace-chat-box-title"># {this.props.currentChat.name}</h2>
@@ -66,7 +66,6 @@ class ChatBox extends React.Component {
         </section>
       )
       } else if (this.props.chatBoxType === "conversation" && this.props.currentMessages === undefined) {
-        let messages = Object.values(this.props.currentMessages).reverse()
         return (
           <section className="workspace-chat-box">
             <div className="chat-box-header">
@@ -88,7 +87,7 @@ class ChatBox extends React.Component {
               {
                 messages.map(el => {
                   return ( 
-                    <Message receiveTextArea={this.props.receiveTextArea} key={el.id} formType="channel" message={el} workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
+                    <Message currentUser={this.props.currentUser} receiveTextArea={this.props.receiveTextArea} key={el.id} formType="channel" message={el} workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
                   )
                 })
               }      
@@ -109,7 +108,7 @@ class ChatBox extends React.Component {
               {
               messages.map(el => {
                 return ( 
-                  <Message receiveTextArea={this.props.receiveTextArea} key={el.id} message={el} formType="conversation" workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
+                  <Message currentUser={this.props.currentUser} receiveTextArea={this.props.receiveTextArea} key={el.id} message={el} formType="conversation" workspaceUsers={this.props.workspaceUsers} currentUserId={this.props.currentUser.id}/> 
                 )
               })
               }      

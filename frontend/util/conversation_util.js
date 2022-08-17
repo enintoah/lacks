@@ -20,3 +20,11 @@ export const updateConversationMessage = (id, message) => {
     data: message
   })
 }
+
+export const createConversation = (data) => {
+  return $.ajax({
+    url: `/api/conversations`, 
+    method: `POST`, 
+    data: data
+  })
+}
