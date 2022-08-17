@@ -20,3 +20,11 @@ export const updateChannelMessage = (id, message) => {
     data: message
   })
 }
+
+export const createChannel = (data) => {
+  return $.ajax({
+    url: `/api/channels`, 
+    method: 'POST',
+    data: data
+  })
+}

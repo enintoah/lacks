@@ -6,6 +6,7 @@ import channelsReducer from "./channels_reducer";
 import channelMessagesReducer from "./channel_messages_reducer";
 import conversationMessagesReducer from "./conversation_messages_reducer";
 import workspaceUsersReducer from "./workspace_users_reducer";
+import currentWorkspaceReducer from "./current_workspace_reducer";
 
 const entitiesReducer = combineReducers({
   currentUser: usersReducer,
@@ -14,7 +15,8 @@ const entitiesReducer = combineReducers({
   channels: channelsReducer,
   channelMessages: channelMessagesReducer,
   conversationMessages: conversationMessagesReducer,
-  workspaceUsers: workspaceUsersReducer
+  workspaceUsers: workspaceUsersReducer,
+  currentWorkspace: currentWorkspaceReducer
 })
 
 export default entitiesReducer;

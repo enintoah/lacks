@@ -286,6 +286,7 @@
 .workspace-direct-messages:hover {
   .arrow-for-create-conversation {
     display: block;
+    cursor: pointer;
   }
 }
 
@@ -309,3 +310,6 @@
   height: 18px;
 }
 
+.workspace-open-modal {
+  margin-left: 130px;
+}

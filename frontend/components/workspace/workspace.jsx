@@ -11,12 +11,15 @@ class Workspace extends React.Component {
   constructor(props) {
     super(props)
 
+
+    this.toggleModal = this.toggleModal.bind(this)
     this.subscriptions = []
   }
 
   async componentDidMount() {
     await this.props.requestUserWorkspaces(this.props.currentUser.id);
     await this.props.populateWorkspace(this.props.currentWorkspace.id)
+    await this.props.receiveCurrentWorkspace(this.props.currentWorkspace)
     this.enterRoom()
     this.enterFirstChannel()
   }
@@ -93,6 +96,11 @@ class Workspace extends React.Component {
     this.props.history.push(`/workspace/${this.props.currentWorkspace.id}/channel/${this.props.firstChannel}`);
   }
 
+  toggleModal(e) {
+    e.preventDefault()
+    this.props.openModal()
+  }
+
   render() {
     if (!this.props.firstChannel) {
       return null
@@ -108,9 +116,12 @@ class Workspace extends React.Component {
         <div className="workspace-body">
           <div className="workspace-sidebar">
             <h1>{this.props.currentWorkspace.name}</h1>
-            <h2>&nbsp;<i className="fa-solid fa-caret-down"></i>&nbsp;&nbsp;&nbsp;Channels</h2>
-            
-
+            <div className="workspace-direct-messages">
+              <h2>&nbsp;<i className="fa-solid fa-caret-down"></i>&nbsp;&nbsp;&nbsp;Channels</h2>
+              <div onClick={this.toggleModal} className="workspace-open-modal arrow-for-create-conversation">
+                <img src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/plus-sign.png"/>
+              </div>
+            </div>
             <ul>
               {this.props.channels.map((el) => {
                 return (

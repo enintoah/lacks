@@ -5,6 +5,15 @@ import { receiveConversations, receiveConversationMessages, clearConversations, 
 export const RECEIVE_ALL_WORKSPACES = "RECEIVE_ALL_WORKSPACES"
 export const RECEIVE_WORKSPACE_USERS = "RECEIVE_WORKSPACE_USERS"
 export const CLEAR_WORKSPACE_USERS = "CLEAR_WORKSPACE_USERS"
+export const RECEIVE_CURRENT_WORKSPACE = "RECEIVE_CURRENT_WORKSPACE"
+
+export const receiveCurrentWorkspace = (workspace) => {
+  return {
+    type: RECEIVE_CURRENT_WORKSPACE, 
+    workspace
+  }
+}
+
 
 const receiveWorkspaces = (workspaces) => {
   return {

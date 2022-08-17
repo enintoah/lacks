@@ -7,11 +7,6 @@ class CreateConversation extends React.Component {
     this.createConversation = this.createConversation.bind(this)
   }
 
-  // async componentDidMount() {
-  //   await this.props.requestUserWorkspaces(this.props.currentUser.id);
-  //   await this.props.populateWorkspace(this.props.currentWorkspace.id)
-  // }
-
   createConversation(e) {
     e.preventDefault();
     const id = e.target.getAttribute('value');
@@ -53,7 +48,7 @@ class CreateConversation extends React.Component {
     } else {
       console.log(this.props.currentWorkspace)
       let users = this.props.workspaceUsers
-      if (users[this.props.currentUser.id]) {
+      if (users[this.props.currentUser.id] !== undefined) {
         delete users[this.props.currentUser.id]
       }
       users = Object.values(users)

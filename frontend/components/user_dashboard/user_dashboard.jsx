@@ -21,7 +21,9 @@ class UserDashboard extends React.Component {
   }
 
   handleRedirect(id) {
-    return () => this.props.history.push(`/workspace/${id}`)
+    return () => { 
+      this.props.history.push(`/workspace/${id}`);
+    }
   }
 
   handleRedirectLinkedIn(e) {
