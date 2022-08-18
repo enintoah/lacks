@@ -30,7 +30,8 @@ class Modal extends React.Component {
     this.props.createNewChannel(channel)
       .then(res => {
         this.props.closeModal();
-        this.props.history.push(`/workspace/${workspace.id}/channel/${res.channel.id}`)
+        this.props.history.push(`/workspace/${workspace.id}/channel/${res.channel.id}`);
+        window.location.reload();
       })
   }
 

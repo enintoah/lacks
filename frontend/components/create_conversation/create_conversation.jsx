@@ -25,7 +25,10 @@ class CreateConversation extends React.Component {
         second_user_name: this.props.workspaceUsers[id].name, 
       }
     }
-    this.props.createNewConversation(conversation).then(res => this.props.history.push(`/workspace/${this.props.currentWorkspace.id}/conversation/${res.conversation.id}`))
+    this.props.createNewConversation(conversation).then(res => {
+      this.props.history.push(`/workspace/${this.props.currentWorkspace.id}/conversation/${res.conversation.id}`);
+      window.location.reload();
+    })
   }
 
   checkExistingConversations(id) {
@@ -46,7 +49,6 @@ class CreateConversation extends React.Component {
     if (this.props.workspaceUsers === undefined) {
       return null 
     } else {
-      console.log(this.props.currentWorkspace)
       let users = this.props.workspaceUsers
       if (users[this.props.currentUser.id] !== undefined) {
         delete users[this.props.currentUser.id]
@@ -59,7 +61,7 @@ class CreateConversation extends React.Component {
             {
               users.map(el => {
                 return (
-                  <div onClick={this.createConversation} className="create-conversation-individual-user" value={el.user_id}>
+                  <div key={el.user_id} onClick={this.createConversation} className="create-conversation-individual-user" value={el.user_id}>
                     <div className="create-conversation-profile-pics">
                       <img value={el.user_id} className="create-conversation-actual-pic" src="https://lacks-aa-dev.s3.us-west-1.amazonaws.com/profile+picture.png"/>
                     </div>

@@ -93,7 +93,10 @@ class Workspace extends React.Component {
   }
 
   enterFirstChannel() {
-    this.props.history.push(`/workspace/${this.props.currentWorkspace.id}/channel/${this.props.firstChannel}`);
+    const url = window.location.href
+    if (!url.includes("channel") && !url.includes("conversation")) {
+      this.props.history.push(`/workspace/${this.props.currentWorkspace.id}/channel/${this.props.firstChannel}`);
+    }
   }
 
   toggleModal(e) {
