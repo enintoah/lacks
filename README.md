@@ -15,13 +15,25 @@
 
 ## Functionality
 
+### User Auth 
+
+Users can log into existing accounts and create new ones. These accounts allow them to join workspaces where they can chat with others. Each user's password is salted and hashed for extra security using BCrypt. 
+
+<br />
+
+![Login](images_README/login.png)
+![Signup](images_README/signup.png)
+
+<br />
+
+
 ### Channels and Conversations
 
 I used a postgreSQL database and designed the database so that a user can have many workspaces. Each workspace also contains many channels and conversations for a specific user. Channels are chats that every user in a workspace can see while conversations are private between users. 
 
 <br />
 
-![Channels](images_README/workspaces.png)
+![Workspaces](images_README/workspaces.png)
 ![Live Messaging](images_README/live_messaging.png)
 
 <br />
@@ -81,7 +93,7 @@ createConversationSubs(id) {
 }
 ```
 
-As shown in the code above, I decided to join every Action Cable channel a user belongs to when they enter a workspace. I used a either a conversation's or channel's id as a way to distinguish between Action Cable channels. This allows the user to receive all messages that will be sent to them after they join a channel. Users can also edit a delete messages when they hover over a specific message they sent. 
+As shown in the code above, I decided to join every Action Cable channel a user belongs to when they enter a workspace. I used a either a conversation's or channel's id as a way to distinguish between Action Cable channels. This allows the user to receive all messages that will be sent to them after they join a channel. Users can also edit and delete messages when they hover over a specific message they sent. 
 
 <br />
 
