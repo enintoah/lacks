@@ -10,7 +10,13 @@ class Api::ConversationsController < ApplicationController
   end
 
   def destroy 
-
+    @conversation = Conversation.find_by(id: params[:id])
+    @conversation.messages.destroy_all
+    if @conversation.destroy
+      render json: @conversation
+    else 
+      render json: ["Conversation was not destroyed"], status 422 
+    end
   end
 
   private 

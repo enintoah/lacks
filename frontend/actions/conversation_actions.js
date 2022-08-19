@@ -1,7 +1,8 @@
-import { createConversation } from "../util/conversation_util"
+import { createConversation, deleteConversation } from "../util/conversation_util"
 
 export const RECEIVE_CONVERSATIONS = "RECEIVE_ALL_CONVERSATIONS"
 export const RECEIVE_CONVERSATION = "RECEIVE_CONVERSATION" 
+export const DELETE_CONVERSATION = "DELETE_CONVERSATION"
 export const CLEAR_CONVERSATIONS = "CLEAR_CONVERSATIONS"
 
 export const RECEIVE_CONVERSATION_MESSAGES = "RECEIVE_CONVERSATION_MESSAGES"
@@ -37,6 +38,13 @@ export const receiveConversationMessage = (message) => {
   }
 }
 
+export const clearConversation = (conversation) => {
+  return {
+    type: DELETE_CONVERSATION, 
+    conversation
+  }
+}
+
 export const clearConversations = () => {
   return {
     type: CLEAR_CONVERSATIONS
@@ -59,4 +67,9 @@ export const clearConversationMessage = (message) => {
 export const createNewConversation = (conversation) => (dispatch) => {
   return createConversation(conversation)
     .then(res => dispatch(receiveConversation(res)))
+}
+
+export const removeConversation = (id) => (dispatch) => {
+  return deleteConversation(id)
+    .then(res => dispatch(clearConversation(res)))
 }

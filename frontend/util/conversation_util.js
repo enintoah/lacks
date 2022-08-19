@@ -28,3 +28,10 @@ export const createConversation = (data) => {
     data: data
   })
 }
+
+export const deleteConversation = (id) => {
+  return $.ajax({
+    url: `/api/conversations/${id}`, 
+    method: 'DELETE'
+  })
+}
