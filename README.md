@@ -1,24 +1,7 @@
-# README
+# [Lacks](https://appacademylacks.herokuapp.com/#/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Lacks is a fully interactive clone of the popular work messaging app, Slack. Lacks was created as a demonstration of my abilities in web development and software engineering. You can create an account and join workspaces. In these workspaces, there are channels and direct messages where live messaging is enabled.
 
-Things you may want to cover:
+![My Image](images_README/render.png)
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
