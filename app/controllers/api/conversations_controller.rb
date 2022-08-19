@@ -15,7 +15,7 @@ class Api::ConversationsController < ApplicationController
     if @conversation.destroy
       render json: @conversation
     else 
-      render json: ["Conversation was not destroyed"], status 422 
+      render json: ["Conversation was not destroyed"], status: 422 
     end
   end
 
