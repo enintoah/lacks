@@ -100,3 +100,13 @@ As shown in the code above, I decided to join every Action Cable channel a user 
 ![Edit and Delete](images_README/edit_delete.png)
  
 <br />
+
+# Additional Functionality 
+1. Conversations and Channels can be created 
+
+## Possible Bonus Functionality 
+1. Search Bar for all users in a certain workspace
+2. Ability to create Group chats
+3. Launch Lacks opens a new tab
+4. Ability to delete conversations
+5. Ability to upload custom profile pictures
