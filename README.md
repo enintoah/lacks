@@ -101,7 +101,7 @@ As shown in the code above, I decided to join every Action Cable channel a user 
  
 <br />
 
-# Additional Functionality 
+### Additional Functionality 
 1. Conversations and Channels can be created 
 
 ## Possible Bonus Functionality 
