@@ -22,15 +22,11 @@ I used a postgreSQL database and designed the database so that a user can have m
 <br />
 
 ![Channels](images_README/workspaces.png)
+![Live Messaging](images_README/live_messaging.png)
 
 <br />
 
 ### Live Messaging 
-<br />
-
-![Live Messaging](images_README/live_messaging.png)
-
-<br />
 
 To implement live messaging, I learned about websockets and implemented Ruby on Rails' buit-in Action Cable. 
 
