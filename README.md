@@ -81,5 +81,10 @@ createConversationSubs(id) {
 }
 ```
 
-As shown in the code above, I decided to join every Action Cable channel a user belongs to when they enter a workspace. I used a either a conversation's or channel's id as a way to distinguish between Action Cable channels. This allows the user to receive all messages that will be sent to them. 
+As shown in the code above, I decided to join every Action Cable channel a user belongs to when they enter a workspace. I used a either a conversation's or channel's id as a way to distinguish between Action Cable channels. This allows the user to receive all messages that will be sent to them after they join a channel. Users can also edit a delete messages when they hover over a specific message they sent. 
 
+<br />
+
+![Edit and Delete](images_README/edit_delete.png)
+ 
+<br />
