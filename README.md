@@ -15,7 +15,7 @@
 
 ## Functionality
 
-# Channels and Conversations
+### Channels and Conversations
 
 I used a postgreSQL database and designed the database so that a user can have many workspaces. Each workspace also contains many channels and conversations for a specific user. Channels are chats that every user in a workspace can see while conversations are private between users. 
 
@@ -25,7 +25,7 @@ I used a postgreSQL database and designed the database so that a user can have m
 
 <br />
 
-# Live Messaging 
+### Live Messaging 
 <br />
 
 ![Live Messaging](images_README/live_messaging.png)
